@@ -1,3 +1,29 @@
+:root {
+  --color-gray: #808080;
+  --color-blue: #4facfe;
+  --color-blue-light: #00f2fe;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-bg-light: #fafafa;
+  --color-card-shadow: #69696916;
+  --color-card-text: #111111;
+  --color-border: #e0e0e0;
+  --color-desc: #555555;
+}
+
+body.dark-theme {
+  --color-gray: #b0b0b0;
+  --color-blue: #4facfe;
+  --color-blue-light: #00f2fe;
+  --color-black: #ffffff;
+  --color-white: #181818;
+  --color-bg-light: #1d1d1d;
+  --color-card-shadow: #00000033;
+  --color-card-text: #f0f0f0;
+  --color-border: #333842;
+  --color-desc: #bbbbbb;
+}
+
 *,
 ::before,
 ::after {
@@ -10,6 +36,7 @@ html {
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 img {
@@ -23,19 +50,19 @@ h3 {
   margin: 0;
 }
 
-
 .header {
   width: 100%;
   padding: 15px 0;
-
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 24px;
   font-weight: 300;
-  color: gray;
+  color: var(--color-gray);
+  background-color: var(--color-white);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.075);
+  z-index: 1000;
+    margin-bottom: 24px; /* Добавьте отступ снизу */
 }
 
 .hero {
@@ -43,6 +70,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--color-white);
 }
 
 .container {
@@ -58,23 +86,21 @@ h3 {
   grid-gap: 20px;
 }
 
-
 .hero__about {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  color: var(--color-black);
 }
 
 .hero__title {
   font-size: 48px;
   line-height: 1.1;
-
   margin-bottom: 20px;
 }
 
 .hero__prof {
-  color: #4facfe;
+  color: var(--color-blue);
   white-space: nowrap;
 }
 
@@ -89,24 +115,20 @@ h3 {
 
 .hero__link {
   margin-right: 10px;
-
   font-size: 30px;
-  color: #000;
+  color: var(--color-black);
 }
 
 .hero__link:hover {
-  color: #4facfe;
+  color: var(--color-blue);
 }
-
 
 .hero__box {
   max-width: 500px;
   justify-self: center;
   overflow: hidden;
-  border: 10px solid #fff;
-
-  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-
+  border: 10px solid var(--color-white);
+  background-image: linear-gradient(to right, var(--color-blue) 0%, var(--color-blue-light) 100%);
   animation: ava-animate 5s infinite alternate;
   box-shadow: 2px 5px 10px rgba(0, 0, 0, .5);
 }
@@ -115,12 +137,18 @@ h3 {
   animation: ava-bg 3s infinite alternate;
 }
 
+body.dark-theme .hero__box-img {
+  filter: invert(1) hue-rotate(180deg);
+  transition: filter 0.4s;
+}
+
 .about {
   min-height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fafafa;
+  background-color: var(--color-bg-light);
+  color: var(--color-black);
 }
 
 .card-grid {
@@ -132,11 +160,11 @@ h3 {
 }
 
 .card {
-  background-color: #ffffff;
-  color: #111111;
+  background-color: var(--color-white);
+  color: var(--color-card-text);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(105, 105, 105, 0.089);
+  box-shadow: 0 4px 6px var(--color-card-shadow);
   transition: transform 0.2s ease;
   text-align: center;
 }
@@ -148,7 +176,7 @@ h3 {
 .card span {
   display: block;
   font-size: 0.9rem;
-  color: #111111;
+  color: var(--color-card-text);
 }
 
 .skills-link {
@@ -177,6 +205,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--color-black);
 }
 
 .wresults {
@@ -190,12 +219,12 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
-  color: #111111;
+  background-color: var(--color-bg-light);
+  color: var(--color-card-text);
   max-width: 320px;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(105, 105, 105, 0.089);
+  box-shadow: 0 4px 6px var(--color-bg-light);
   transition: transform 0.2s ease;
 }
 
@@ -204,7 +233,7 @@ h3 {
   align-items: center;
   font-size: 21px;
   gap: 10px;
-  border-bottom: 2px solid #e0e0e0; /* Цвет и толщина полосы */
+  border-bottom: 2px solid var(--color-border); /* Цвет и толщина полосы */
   padding-bottom: 8px;
   margin-bottom: 12px;
 }
@@ -219,13 +248,13 @@ h3 {
   margin: 0;
   font-weight: bold;
   text-decoration: none;
-  color: #000000;
+  color: var(--color-black);
 }
 
 .wdesc {
   margin-top: 8px;
   font-size: 14px;
-  color: #555;
+  color: var(--color-desc);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -233,11 +262,12 @@ h3 {
 }
 
 .pentestthing {
+  color: var(--color-black);
   min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fafafa;
+  background-color: var(--color-bg-light);
 }
 
 .pentestdisc{
@@ -245,10 +275,23 @@ h3 {
 }
 
 footer {
+    color: var(--color-black);
     min-height: 10vh;
-    background-color: #fff;
+    background-color: var(--color-white);
     display: flex;
     justify-content: center;
+}
+
+body,
+.header,
+.hero,
+.about,
+.myworks,
+.pentestthing,
+.card,
+.wcard,
+footer {
+  transition: background-color 0.4s, color 0.4s, box-shadow 0.4s;
 }
 
 @media screen and (max-width: 978px) {
@@ -308,8 +351,6 @@ footer {
   }
 
 }
-
-
 
 @keyframes ava-animate {
   0% {
