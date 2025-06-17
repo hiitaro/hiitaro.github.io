@@ -165,12 +165,79 @@ h3 {
   margin-left: 0.2em;
 }
 
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.myworks {
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wresults {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.wcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  color: #111111;
+  max-width: 320px;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(105, 105, 105, 0.089);
+  transition: transform 0.2s ease;
+}
+
+.wtitle {
+  display: flex;
+  align-items: center;
+  font-size: 21px;
+  gap: 10px;
+  border-bottom: 2px solid #e0e0e0; /* Цвет и толщина полосы */
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.pdf-icon img {
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+}
+
+.wtext {
+  margin: 0;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000000;
+}
+
+.wdesc {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .pentestthing {
   min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #fafafa;
 }
 
 .pentestdisc{
@@ -179,7 +246,7 @@ h3 {
 
 footer {
     min-height: 10vh;
-    background-color: #fafafa;
+    background-color: #fff;
     display: flex;
     justify-content: center;
 }
@@ -187,6 +254,7 @@ footer {
 @media screen and (max-width: 978px) {
   .hero {
     padding-top: 30px;
+    padding-bottom: 60px;
   }
 
   .hero__container {
@@ -219,6 +287,26 @@ footer {
     max-width: 350px;
     justify-self: center;
   }
+
+  .myworks {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .about {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .pentestthing {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .footer {
+    padding: 20px 0;
+  }
+
 }
 
 
