@@ -102,19 +102,58 @@
   <div class="myworks">
     <div class="container">
       <p class="hero__title" style="margin: 0;">My works:</p>
+      <div class="sort-controls">
+        <label for="sort-date">Sort by date:</label>
+        <select id="sort-date">
+          <option value="date-desc">Date (newest first)</option>
+          <option value="date-asc">Date (oldest first)</option>
+          <option value="none">None</option>
+        </select>
+        <label for="sort-vulns">Sort by vulnerabilities:</label>
+        <div style="display: flex; align-items: center;">
+          <select id="sort-vulns">
+            <option value="none">None</option>
+            <option value="vulns-desc">Vulnerabilities (most first)</option>
+            <option value="vulns-asc">Vulnerabilities (least first)</option>
+          </select>
+          <button id="clear-vulns" title="Clear vuln sort">✖</button>
+        </div>
+        <label for="sort-domain">Filter by domain:</label>
+        <select id="sort-domain">
+          <option value="all">All domains</option>
+        </select>
+      </div>
       <div class="works-grid">
         <div class="wcard">
           <div class="wtitle">
             <a href="files/saratov-bankrotstvo-ru.pdf" download class="pdf-icon" title="Download PDF">
               <img src="pdf.png" alt="PDF" />
             </a>
-            <a class="wtext" href="https://saratov-bankrotstvo.ru">saratov-bankrotstvo.ru</a>
+            <a class="wtext" href="https://saratov-bankrotstvo.ru">saratov-bankrotstvo.<span id="domen">ru</span></a>
           </div>
           <div class="wdesc">
             <p>My first job was searching for vulnerabilities on a web server. All information in PDF.</p>
-            <div class="wresults"><img style="width: 38px; height: 38px;" src="bug.png" alt="bug"> <p style="color: brown; font-size: 18px; font-weight: 900;">27 vulns</p></div>
+            <div class="wresults"><img style="width: 38px; height: 38px;" src="bug.png" alt="bug"> <p style="color: rgb(228, 65, 65); font-size: 18px; font-weight: 900;" id="vulns">27 vulns</p></div>
+            <p style="color: rgb(228, 65, 65);">Patches not verified</p>      
+            <p id="workDate" style="margin: 0;">17.06.2025</p>    
           </div>
         </div>
+
+        <div class="wcard">
+          <div class="wtitle">
+            <a href="files/ddark-ru-report.pdf" download class="pdf-icon" title="Download PDF">
+              <img src="pdf.png" alt="PDF" />
+            </a>
+            <a class="wtext" href="https://it-legal.ru">ddark.<span id="domen">ru</span></a>
+          </div>
+          <div class="wdesc">
+            <p>A browser extension site. That applies custom dark themes to backorder and expired websites.</p>
+            <div class="wresults"><img style="width: 38px; height: 38px;" src="bug.png" alt="bug"> <p style="color: rgb(228, 65, 65); font-size: 18px; font-weight: 900;" id="vulns">15 vulns</p></div>
+            <p style="color: rgb(228, 65, 65);">Patches not verified</p>
+            <p id="workDate" style="margin: 0;">19.06.2025</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -150,6 +189,7 @@
     </div>
   </footer>
 
+  <script src="vulnsSort.js"></script>
   <script src="theme.js"></script>
 </body>
 

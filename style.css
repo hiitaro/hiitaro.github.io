@@ -195,9 +195,10 @@ body.dark-theme .hero__box-img {
 
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
   gap: 20px;
   margin-top: 30px;
+  justify-content: start; /* прижать сетку к левому краю */
 }
 
 .myworks {
@@ -206,6 +207,61 @@ body.dark-theme .hero__box-img {
   justify-content: center;
   align-items: center;
   color: var(--color-black);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.sort-controls {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 24px;
+  margin-top: 12px;
+  font-size: 15px;
+}
+
+.sort-controls label {
+  margin-right: 4px;
+  color: var(--color-gray);
+  font-weight: 400;
+}
+
+.sort-controls select {
+  padding: 4px 18px 4px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-white);
+  color: var(--color-gray);
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s;
+  min-width: 120px;
+  appearance: none;
+  height: 40px;
+}
+
+#clear-vulns {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+@media (max-width: 700px) {
+  .sort-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+  }
+  .sort-controls select {
+    min-width: 100px;
+    font-size: 14px;
+  }
 }
 
 .wresults {
@@ -221,21 +277,25 @@ body.dark-theme .hero__box-img {
   align-items: center;
   background-color: var(--color-bg-light);
   color: var(--color-card-text);
-  max-width: 320px;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 6px var(--color-bg-light);
   transition: transform 0.2s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: 0;
 }
 
 .wtitle {
   display: flex;
   align-items: center;
+  justify-content: start;
   font-size: 21px;
   gap: 10px;
-  border-bottom: 2px solid var(--color-border); /* Цвет и толщина полосы */
+  border-bottom: 2px solid var(--color-border);
   padding-bottom: 8px;
   margin-bottom: 12px;
+  width: 100%;
 }
 
 .pdf-icon img {
@@ -334,6 +394,10 @@ footer {
   .myworks {
     padding-top: 60px;
     padding-bottom: 60px;
+  }
+
+  .works-grid {
+    justify-content: center; /* центрируем сетку */
   }
 
   .about {
