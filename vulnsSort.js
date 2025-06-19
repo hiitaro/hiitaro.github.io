@@ -32,7 +32,7 @@ function fillDomainSelect() {
   const domains = new Set();
   cards.forEach(card => {
     const domain = getDomain(card);
-    if (domain) domains.add('.' + domain);
+    if (domain) domains.add(domain);
   });
   // Очистить и добавить "All domains"
   sortDomain.innerHTML = '<option value="all">All domains</option>';
