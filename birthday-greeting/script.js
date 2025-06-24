@@ -58,7 +58,7 @@ function showNextBlock() {
     if (currentBlock < contentBlocks.length) {
         contentElement.innerHTML = contentBlocks[currentBlock];
     } else {
-        contentElement.innerHTML = `<h2>спасибо за всё.!</h2>`;
+        contentElement.innerHTML = `<h2>спасибо за всё.</h2>`;
         nextButton.style.display = 'none';
     }
 }
