@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Apresian Site</title>
+
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    img-src 'self' data:;
+    style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline';
+    font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:;
+    script-src 'self' https://cdn.jsdelivr.net;
+    connect-src 'self';
+  ">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=check_small,hourglass_bottom" />
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <header class="header">
+    <span class="logo">Web Developer</span>
+    <button id="theme-toggle" style="margin-left:20px;cursor:pointer;background:none;border:none;font-size:22px;" title="Toggle theme">🌙</button>
+  </header>
+
+  <div class="hero">
+    <div class="container hero__container">
+      <div class="hero__about">
+        <h1 class="hero__title">Web Developer</h1>
+        <h2 class="hero__subtitle">Daniel Apresian</h2>
+        <p class="hero__description">
+          Hi! I'm Daniel, a passionate web developer with a knack for creating sleek, user-friendly websites. I specialize in HTML, CSS, and JavaScript, and I'm always eager to learn new technologies and frameworks. Whether it's building responsive designs or optimizing performance, I love turning ideas into reality on the web.
+        </p>
+
+
+        <div class="hero__links">
+          <a class="hero__link" href="https://github.com/hiitaro" target="_blank"><i class='bx bxl-github'></i></a>
+          <a class="hero__link" href="https://www.linkedin.com/in/apresian-daniil-81b58136a" target="_blank"><i class='bx bxl-linkedin'></i></a>
+          <a class="hero__link" href="mailto:nakimerri@gmail.com" rel="noopener noreferrer"><i class='bx bxl-gmail'></i></a>
+          <a class="hero__link" href="https://t.me/swqrlyy" target="_blank"><i class='bx bxl-telegram'></i></a>
+        </div>
+
+        <p class="hero__description">
+          <a href="#about-skills" class="skills-link">
+            My Works <span class="arrow">⮟</span>
+          </a>
+        </p>
+
+      </div>
+
+      <div class="hero__box">
+        <img class="hero__box-img" src="11.png" alt="">
+      </div>
+
+    </div>
+
+  </div>
+  <div class="myworks" id="about-skills">
+    <div class="container">
+      <p class="hero__title" style="margin: 0;">My works:</p>
+      <div class="works-grid">
+        <div class="wcard">
+          <div class="wtitle">
+            <a href="blogo.png" download class="pdf-icon">
+              <img src="blogo.png" alt="PDF" />
+            </a>
+            <a class="wtext" href="barbershoppreview.html">Haint's Barbershop & Salon<span id="domen">.ru</span></a>
+          </div>
+          <div class="wdesc">
+            <p>Experience the perfect blend of classic barbering and modern salon techniques. Your confidence starts here. <br> <br>  Book your appointment today and discover a look that is uniquely yours.</p>
+            <p style="color: rgb(228, 65, 65);">Patches not verified</p>      
+            <p id="workDate" style="margin: 0;">02.03.2026</p>    
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="pentestthing">
+    <div class="container">
+      <p class="hero__title" style="margin: 0;">Why Your Business Needs a Website</p>
+      <div class="pentestdisc">
+        <p>
+          In today's digital world, a strong online presence is <strong>essential for small businesses</strong>. More than ever, potential customers search online before making purchases or choosing services. If your business doesn't have a website, you're losing opportunities.
+        </p>
+        <p>
+          A well-designed website isn't just a digital brochure — it's a <strong>24/7 showcase</strong> of your brand, available to anyone, anywhere. It builds credibility and helps you stand out from competitors.
+        </p>
+        <ul>
+          <li>✅ Increase visibility and reach new customers online</li>
+          <li>🎯 Showcase your services and products professionally</li>
+          <li>💼 Build trust and credibility with potential clients</li>
+          <li>📱 Stay competitive in your industry with a modern, responsive design</li>
+          <li>🤝 Make it easy for customers to contact you and book services</li>
+        </ul>
+        <p>
+          A <strong>professional website is an investment in your future</strong>. Whether you're a salon, barbershop, consulting firm, or service provider, having an online presence is no longer optional — it's essential 🚀 for growth and success.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">© 2025 Daniel Apresian</p>
+      <p class="footer__text">Made with ❤️</p>
+    </div>
+  </footer>
+
+  <script src="vulnsSort.js"></script>
+  <script src="theme.js"></script>
+</body>
+
+</html>
