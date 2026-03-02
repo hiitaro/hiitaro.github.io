@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whiskers & Coffee | Where Purrs Meet Pours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i data-lucide="cat" class="logo-icon"></i>
+                <span class="logo-text">Whiskers & Coffee</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#cats">Our Cats</a>
+                <a href="#menu">Menu</a>
+                <a href="#visit">Visit</a>
+                <a href="#visit" class="btn btn-primary btn-sm">Book a Visit</a>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Where Purrs Meet Pours.</h1>
+            <p class="hero-subtitle">Hollywood’s premier sanctuary for coffee lovers and cat cuddlers. Sip, relax, and find your new best friend.</p>
+            <div class="hero-btns">
+                <a href="#visit" class="btn btn-hero-primary">Book a Visit</a>
+                <a href="#cats" class="btn btn-secondary">View Our Cats</a>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="about section">
+        <div class="container grid-2">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1000&auto=format&fit=crop" alt="Calm cat resting" class="reveal-img">
+            </div>
+            <div class="about-text">
+                <span class="section-badge">Our Story</span>
+                <h2 class="section-title">A Sanctuary in the City</h2>
+                <p>Whiskers & Coffee was born from a simple belief: that every rescue cat deserves a lounge, not a cage, and every coffee lover deserves a sanctuary. We have partnered with local Hollywood animal rescues to provide a "foster-lounge" environment.</p>
+                <p>Step inside and leave the bustle of Florida life behind. Our space is meticulously designed to be a "living room away from home," featuring warm oak textures, soft ambient lighting, and plenty of cozy nooks for both humans and cats.</p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">50+</span>
+                        <span class="stat-label">Adoptions</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">12</span>
+                        <span class="stat-label">Resident Cats</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="cats" class="cats section bg-beige">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">The Residents</span>
+                <h2 class="section-title">Meet the Stars</h2>
+                <p class="section-desc">Every purr you hear is a step toward a forever home. All our residents are available for adoption.</p>
+            </div>
+            <div class="cat-grid">
+                <div class="cat-card">
+                    <div class="cat-img-wrapper">
+                        <img src="cat1.jpg" alt="Mochi the cat">
+                    </div>
+                    <div class="cat-info">
+                        <h3>Mochi</h3>
+                        <p class="personality">"A gentle soul who expresses love through quiet chirps. Master of the slow blink."</p>
+                        <div class="cat-meta">
+                            <span><i data-lucide="map-pin"></i> Velvet Armchair</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <div class="cat-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=800&auto=format&fit=crop" alt="Luna the cat">
+                    </div>
+                    <div class="cat-info">
+                        <h3>Luna</h3>
+                        <p class="personality">"Elegant and observant, Luna considers herself the café's supervisor. Prefers to watch from above."</p>
+                        <div class="cat-meta">
+                            <span><i data-lucide="map-pin"></i> Mahogany Cat Tree</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <div class="cat-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1548247416-ec66f4900b2e?q=80&w=800&auto=format&fit=crop" alt="Oliver the cat">
+                    </div>
+                    <div class="cat-info">
+                        <h3>Oliver</h3>
+                        <p class="personality">"Our self-appointed 'Greeter.' Oliver is high-energy and will likely inspect your shoelaces."</p>
+                        <div class="cat-meta">
+                            <span><i data-lucide="map-pin"></i> Entrance Rug</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <div class="cat-img-wrapper">
+                        <img src="cat2.jpg" alt="Bella the cat">
+                    </div>
+                    <div class="cat-info">
+                        <h3>Bella</h3>
+                        <p class="personality">"A senior sweetheart with a penchant for naptime. The ultimate lap-warmer."</p>
+                        <div class="cat-meta">
+                            <span><i data-lucide="map-pin"></i> Any Soft Blanket</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="menu" class="menu section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">Curated Flavors</span>
+                <h2 class="section-title">Signature Treats</h2>
+            </div>
+            <div class="menu-container">
+                <div class="menu-column">
+                    <h3 class="menu-category">Signature Coffees</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="item-name">The Lavender Honey Latte</span>
+                            <span class="item-price">$6.50</span>
+                        </div>
+                        <p class="item-desc">Local honey and organic lavender, topped with a delicate foam paw print.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="item-name">The "Calico" Cappuccino</span>
+                            <span class="item-price">$6.00</span>
+                        </div>
+                        <p class="item-desc">Triple-layered dark espresso, rich milk, and white chocolate foam.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="item-name">Midnight Cold Brew</span>
+                            <span class="item-price">$5.50</span>
+                        </div>
+                        <p class="item-desc">18-hour steep, smooth and sleek as a black cat at night.</p>
+                    </div>
+                </div>
+                <div class="menu-column">
+                    <h3 class="menu-category">Artisanal Sweets & Bites</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="item-name">Paw-Print Shortbread</span>
+                            <span class="item-price">$4.25</span>
+                        </div>
+                        <p class="item-desc">Buttery biscuits dipped in dark Swiss chocolate.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="item-name">The Tabby Toast</span>
+                            <span class="item-price">$9.50</span>
+                        </div>
+                        <p class="item-desc">Artisanal sourdough topped with avocado, heirloom tomatoes, and balsamic glaze.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="item-name">Red Velvet "Whiskers"</span>
+                            <span class="item-price">$5.00</span>
+                        </div>
+                        <p class="item-desc">Decadent cocoa cake topped with cream cheese frosting filigree.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials section bg-pink">
+        <div class="container">
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="quote">"The coffee is surprisingly high-end for a cat café, and the cats are clearly well-loved. I came for the caffeine and left with a full heart."</p>
+                    <span class="author">— Sarah J.</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"My favorite remote work spot. There’s nothing quite like a purring cat on the seat next to you to lower your stress levels."</p>
+                    <span class="author">— David L.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="visit" class="visit section">
+        <div class="container grid-2">
+            <div class="visit-info">
+                <span class="section-badge">Visit Us</span>
+                <h2 class="section-title">Come Say Hello</h2>
+                <div class="visit-details">
+                    <div class="detail-row">
+                        <i data-lucide="map-pin"></i>
+                        <div>
+                            <p><strong>Location</strong></p>
+                            <p>123 Coastal Breeze Way, Hollywood, Florida 33020</p>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="phone"></i>
+                        <div>
+                            <p><strong>Direct Line</strong></p>
+                            <p>(754) 555-1234</p>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="clock"></i>
+                        <div>
+                            <p><strong>Hours</strong></p>
+                            <p>Tue – Sun: 10:00 AM – 8:00 PM</p>
+                            <p class="muted">Monday: Closed for deep cleaning</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="visit-note">Reservations recommended for weekends to ensure a peaceful environment for our cats.</p>
+            </div>
+            <div class="map-placeholder">
+                <div class="map-inner">
+                    <i data-lucide="navigation" class="map-icon"></i>
+                    <span>Map View - Hollywood, FL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i data-lucide="cat" style="color: white;"></i>
+                        <span style="color: white; ">Whiskers & Coffee</span>
+                    </div>
+                    <p>Connecting paws and people in a cozy, caffeine-filled sanctuary.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="social-link"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Whiskers & Coffee Cat Café. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts.js"></script>
+</body>
+</html>

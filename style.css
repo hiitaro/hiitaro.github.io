@@ -273,6 +273,7 @@ i {
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin: 5px 0;
 }
 
 .patches-true span {
@@ -357,7 +358,7 @@ i {
 }
 
 .pdf-icon img {
-  width: 62px;
+  width: 64px;
   height: 64px;
   cursor: pointer;
   border-radius: 50%;
@@ -717,4 +718,20 @@ footer {
   to {
     backdrop-filter: hue-rotate(90deg);
   }
+}
+/* Parallax scrolling styles */
+[data-parallax] {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center 50%;
+  will-change: background-position;
+}
+
+[data-parallax-img] {
+  overflow: hidden;
+}
+
+[data-parallax-img] img {
+  will-change: transform;
 }
