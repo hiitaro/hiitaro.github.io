@@ -422,10 +422,14 @@ header.scrolled {
         flex-direction: column;
         gap: 40px;
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .footer-info p {
         justify-content: center;
+        text-align: left;
     }
     
     .footer-social {
