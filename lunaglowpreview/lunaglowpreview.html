@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luna Glow Beauty Studio | Hollywood, FL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Luna Glow</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#services" class="nav-close">Services</a></li>
+    <li><a href="#specialists" class="nav-close">Specialists</a></li>
+    <li><a href="#booking" class="nav-close">Book Now</a></li>
+  </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-backdrop hidden" id="nav-backdrop"></div>
+
+<header class="hero">
+  <img src="lunahero.jpeg"
+       class="hero-img" id="hero-img" alt="Luna Glow Studio Interior">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title anim-target">Illuminate Your<br>Inner Radiance</h1>
+    <p class="hero-subtitle anim-target">Hollywood, Florida · Luxury Artistry</p>
+    <a href="#booking" class="btn-gold hero-btn anim-target">Reserve Your Experience</a>
+  </div>
+</header>
+
+<section id="services">
+  <div class="services-header">
+    <span class="section-label">Curated Treatments</span>
+    <h2 class="section-title">The Art of Beauty</h2>
+  </div>
+  <div class="services-grid" id="services-grid"></div>
+</section>
+
+<section id="specialists">
+  <div class="specialists-inner">
+    <div class="specialists-info">
+      <span class="section-label">The Artisans</span>
+      <h2 class="section-title" style="margin-bottom:1.5rem">Masters of Technique</h2>
+      <p>Our specialists are more than artists — they are curators of your unique aesthetic. Each professional brings a distinct philosophy to the chair, ensuring a bespoke experience tailored to your vision.</p>
+    </div>
+    <div class="specialists-list" id="specialists-list"></div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="booking-inner">
+
+    <div class="booking-panel">
+      <h2>Schedule Appointment</h2>
+
+      <div class="booking-step">
+        <span class="step-label">01. Select Services</span>
+        <div id="booking-services"></div>
+      </div>
+
+      <div class="booking-step">
+        <span class="step-label">02. Choose Specialist</span>
+        <div class="spec-grid" id="booking-specialists"></div>
+      </div>
+
+      <div class="booking-step">
+        <span class="step-label">03. Date &amp; Time</span>
+
+        <div class="calendar-wrap">
+          <div class="calendar-header">
+            <h4 id="cal-month-label"></h4>
+            <div class="cal-nav">
+              <button class="cal-nav-btn" id="cal-prev" aria-label="Previous month">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button class="cal-nav-btn" id="cal-next" aria-label="Next month">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="calendar-dow">
+            <div>SUN</div><div>MON</div><div>TUE</div>
+            <div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+          </div>
+          <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+
+        <p class="slots-header">
+          Available Slots
+          <span class="happy-label">★ Happy Hour (15% Off)</span>
+        </p>
+        <div class="slots-grid" id="time-slots">
+          <p class="slot-placeholder">Please select a date first.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="summary-panel">
+        <h3>Experience Summary</h3>
+
+        <div class="summary-row text-muted">
+          <span>Selected Services</span>
+          <span id="summary-svc-count">0</span>
+        </div>
+        <hr class="summary-divider">
+
+        <div class="summary-svc-list" id="summary-svc-list">
+          <p class="summary-no-svc">No services selected yet.</p>
+        </div>
+
+        <hr class="summary-divider">
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="price-subtotal">$0.00</span>
+        </div>
+        <div class="summary-row text-gold hidden" id="row-specialist">
+          <span>Specialist Adjustment</span>
+          <span id="price-specialist">$0.00</span>
+        </div>
+        <div class="summary-row text-red hidden" id="row-happy">
+          <span>Happy Hour (−15%)</span>
+          <span id="price-happy">−$0.00</span>
+        </div>
+
+        <div class="summary-total">
+          <span>Total Due</span>
+          <span id="price-total">$0.00</span>
+        </div>
+
+        <div class="deposit-box">
+          <div class="deposit-row">
+            <span>Booking Deposit (30%)</span>
+            <span id="price-deposit">$0.00</span>
+          </div>
+          <p class="deposit-note">Required to secure your appointment time.</p>
+        </div>
+
+        <button id="btn-pay" class="btn-gold" disabled>Complete Booking</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Luna Glow</h3>
+      <p>The pinnacle of luxury aesthetic care in Hollywood, Florida. We believe beauty is an intentional ritual.</p>
+      <div class="footer-socials">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Location</h4>
+      <p>1200 N Ocean Dr<br>Hollywood, FL 33019<br>9:00 AM – 7:00 PM Daily</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="08606d64646748647d66696f64677f267b7c7d6c6167">[email&#160;protected]</a><br>(954) 555-0192</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Luna Glow Beauty Studio</span>
+    <a href="admin.html" class="admin-link">Admin Access</a>
+  </div>
+</footer>
+
+<div id="payment-modal" class="modal-overlay hidden">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-box">
+    <h3>Secure Deposit</h3>
+    <p class="modal-amount">Amount: <span id="modal-amount" class="text-gold">$0.00</span></p>
+    <input type="text" id="card-number" placeholder="Card Number" class="form-input" maxlength="19">
+    <div class="form-row">
+      <input type="text" id="card-expiry" placeholder="MM/YY" class="form-input" maxlength="5">
+      <input type="text" id="card-cvc" placeholder="CVC" class="form-input" maxlength="4">
+    </div>
+    <button id="confirm-pay-btn" class="btn-gold" style="width:100%;margin-top:1rem">
+      Pay Now
+    </button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module">
+
+const SUPABASE_URL  = 'https://YOUR_PROJECT.supabase.co';
+const SUPABASE_ANON = 'YOUR_ANON_KEY';
+
+const sb = (() => {
+  const headers = {
+    'apikey': SUPABASE_ANON,
+    'Authorization': `Bearer ${SUPABASE_ANON}`,
+    'Content-Type': 'application/json',
+    'Prefer': 'return=representation'
+  };
+
+  const url = (path, params = '') =>
+    `${SUPABASE_URL}/rest/v1/${path}${params ? '?' + params : ''}`;
+
+  return {
+    async select(table, params = '') {
+      const r = await fetch(url(table, params), { headers });
+      if (!r.ok) throw new Error(await r.text());
+      return r.json();
+    },
+    async insert(table, body) {
+      const r = await fetch(url(table), {
+        method: 'POST', headers, body: JSON.stringify(body)
+      });
+      if (!r.ok) throw new Error(await r.text());
+      return r.json();
+    }
+  };
+})();
+
+const SERVICES = [
+  { id: 'svc1', name: 'Lash Extensions',  price: 120, duration: 90,
+    img: 'lashart.jpeg',
+    desc: 'Premium synthetic mink applications for effortless volume.' },
+  { id: 'svc2', name: 'Facial Treatment', price: 95,  duration: 60,
+    img: 'facial.jpeg',
+    desc: 'Hydrating botanical therapy with ultrasonic infusion.' },
+  { id: 'svc3', name: 'Brow Shaping',     price: 40,  duration: 30,
+    img: 'brow.jpeg',
+    desc: 'Precision architecture using signature waxing techniques.' },
+  { id: 'svc4', name: 'Makeup Session',   price: 110, duration: 75,
+    img: 'makeup.jpeg',
+    desc: 'High-definition application for editorial-ready aesthetics.' }
+];
+
+const SPECIALISTS = [
+  { id: 'spec1', name: 'Sophia', tier: 'Senior Artist', mod: 1.20,
+    workDays: [0,2,3,4,5,6], hours: { s: 9,  e: 19 },
+    bio: '10+ years experience, focused on editorial aesthetics.' },
+  { id: 'spec2', name: 'Mia',    tier: 'Lead Stylist',  mod: 1.00,
+    workDays: [0,3,4,5,6],   hours: { s: 10, e: 18 },
+    bio: 'Resident expert in classic glamour and clean beauty.' },
+  { id: 'spec3', name: 'Ava',    tier: 'Junior Artist', mod: 0.85,
+    workDays: [2,3,4,5,6],   hours: { s: 9,  e: 17 },
+    bio: 'Specialist in natural "clean girl" contemporary looks.' }
+];
+
+const MONTH_NAMES = ['January','February','March','April','May','June',
+                     'July','August','September','October','November','December'];
+
+
+const state = {
+  services:     [],   
+  specialistId: null,
+  date:         null, 
+  time:         null, 
+  isHappyHour:  false,
+  total:        0,
+  deposit:      0,
+  calYear:      new Date().getFullYear(),
+  calMonth:     new Date().getMonth(),
+  bookedSlots:  []    
+};
+
+function init() {
+  renderServicesSection();
+  renderSpecialistsSection();
+  renderServicesPicker();
+  renderSpecialistsPicker();
+  renderCalendar();
+  bindPaymentModal();
+  setupMobileMenu();
+  setupAnimations();
+}
+
+function setupMobileMenu() {
+  const burger   = document.getElementById('nav-burger');
+  const links    = document.getElementById('nav-links');
+  const backdrop = document.getElementById('nav-backdrop');
+
+  const open  = () => { links.classList.add('open'); backdrop.classList.remove('hidden'); burger.classList.add('active'); };
+  const close = () => { links.classList.remove('open'); backdrop.classList.add('hidden'); burger.classList.remove('active'); };
+
+  burger.addEventListener('click', () => links.classList.contains('open') ? close() : open());
+  backdrop.addEventListener('click', close);
+  document.querySelectorAll('.nav-close').forEach(a => a.addEventListener('click', close));
+}
+
+function renderServicesSection() {
+  const grid = document.getElementById('services-grid');
+  grid.innerHTML = SERVICES.map(s => `
+    <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+      <div class="service-card-img">
+        <img src="${s.img}" alt="${s.name}" loading="lazy">
+      </div>
+      <h3>${s.name}</h3>
+      <p>${s.desc}</p>
+      <div class="service-card-meta">
+        <span>From $${s.price}</span>
+        <span>${s.duration} min</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderSpecialistsSection() {
+  const list = document.getElementById('specialists-list');
+  list.innerHTML = SPECIALISTS.map(sp => `
+    <div class="specialist-card">
+      <div class="specialist-card-header">
+        <div>
+          <h3>${sp.name}</h3>
+          <span class="tier">${sp.tier}</span>
+        </div>
+        <span class="avail">${formatWorkDays(sp.workDays)}</span>
+      </div>
+      <p>"${sp.bio}"</p>
+    </div>
+  `).join('');
+}
+
+function formatWorkDays(days) {
+  const names = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  return days.map(d => names[d]).join(', ');
+}
+
+function renderServicesPicker() {
+  const el = document.getElementById('booking-services');
+  el.innerHTML = SERVICES.map(s => `
+    <label class="svc-row">
+      <div class="svc-row-left">
+        <input type="checkbox" class="custom-checkbox" data-id="${s.id}">
+        <div>
+          <div class="svc-name">${s.name}</div>
+          <div class="svc-dur">${s.duration} mins</div>
+        </div>
+      </div>
+      <span class="svc-price">$${s.price}</span>
+    </label>
+  `).join('');
+
+  el.querySelectorAll('input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('change', e => {
+      const id = e.target.dataset.id;
+      if (e.target.checked) state.services.push(id);
+      else state.services = state.services.filter(x => x !== id);
+      updateSummary();
+      if (state.date && state.specialistId) renderSlots();
+    });
+  });
+}
+
+function renderSpecialistsPicker() {
+  const el = document.getElementById('booking-specialists');
+  el.innerHTML = SPECIALISTS.map(sp => {
+    const modLabel = sp.mod > 1 ? `+${Math.round((sp.mod-1)*100)}%`
+                   : sp.mod < 1 ? `−${Math.round((1-sp.mod)*100)}%`
+                   : 'Base';
+    return `
+      <div class="spec-choice" data-id="${sp.id}">
+        <div class="spec-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </div>
+        <div class="spec-choice-name">${sp.name}</div>
+        <div class="spec-choice-mod">${modLabel} Price</div>
+      </div>
+    `;
+  }).join('');
+
+  el.querySelectorAll('.spec-choice').forEach(btn => {
+    btn.addEventListener('click', function() {
+      el.querySelectorAll('.spec-choice').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      state.specialistId = this.dataset.id;
+      updateSummary();
+      if (state.date) renderSlots();
+    });
+  });
+}
+
+function renderCalendar() {
+  const label = document.getElementById('cal-month-label');
+  const grid  = document.getElementById('calendar-grid');
+  const today = new Date(); today.setHours(0,0,0,0);
+  const { calYear: y, calMonth: m } = state;
+
+  label.textContent = `${MONTH_NAMES[m]} ${y}`;
+  grid.innerHTML = '';
+
+  const firstDay    = new Date(y, m, 1).getDay();
+  const daysInMonth = new Date(y, m + 1, 0).getDate();
+
+  for (let i = 0; i < firstDay; i++) {
+    grid.insertAdjacentHTML('beforeend', '<div></div>');
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date   = new Date(y, m, d);
+    const isPast = date < today;
+    const isActive = state.date &&
+      state.date.toDateString() === date.toDateString();
+
+    const el = document.createElement('div');
+    el.className = `cal-day${isPast ? ' past' : ''}${isActive ? ' active' : ''}`;
+    el.textContent = d;
+
+    if (!isPast) {
+      el.addEventListener('click', () => selectDate(date));
+    }
+    grid.appendChild(el);
+  }
+
+  document.getElementById('cal-prev').onclick = () => {
+    if (state.calMonth === 0) { state.calMonth = 11; state.calYear--; }
+    else state.calMonth--;
+    renderCalendar();
+  };
+
+  document.getElementById('cal-next').onclick = () => {
+    if (state.calMonth === 11) { state.calMonth = 0; state.calYear++; }
+    else state.calMonth++;
+    renderCalendar();
+  };
+}
+
+function selectDate(date) {
+  state.date = date;
+  state.time = null;
+  state.isHappyHour = false;
+  renderCalendar();
+  renderSlots();
+  updateSummary();
+}
+
+async function renderSlots() {
+  const container = document.getElementById('time-slots');
+  container.innerHTML = '<p class="slot-placeholder">Loading…</p>';
+
+  if (!state.specialistId) {
+    container.innerHTML = '<p class="slot-placeholder" style="color:#e05555">Please select a specialist first.</p>';
+    return;
+  }
+
+  const specialist = SPECIALISTS.find(s => s.id === state.specialistId);
+  const dow = state.date.getDay();
+
+  if (!specialist.workDays.includes(dow)) {
+    container.innerHTML = '<p class="slot-placeholder" style="color:#e05555">Specialist is off today.</p>';
+    return;
+  }
+
+  const dateStr = state.date.toISOString().split('T')[0]; 
+  try {
+    const rows = await sb.select(
+      'bookings',
+      `specialist_id=eq.${state.specialistId}&date=eq.${dateStr}&status=eq.confirmed&select=time_slot,duration_minutes`
+    );
+    state.bookedSlots = rows.map(r => r.time_slot.slice(0, 5)); 
+  } catch {
+    state.bookedSlots = [];
+  }
+
+  const totalMin = state.services.reduce((acc, sid) => {
+    return acc + SERVICES.find(s => s.id === sid).duration;
+  }, 0) + 30;
+
+  container.innerHTML = '';
+
+  for (let h = specialist.hours.s; h < specialist.hours.e; h++) {
+    for (const min of [0, 30]) {
+      const label = `${String(h).padStart(2,'0')}:${String(min).padStart(2,'0')}`;
+      const isHappy  = dow >= 1 && dow <= 5 && h >= 10 && h < 13;
+      const isBooked = isSlotBooked(label, totalMin);
+
+      const el = document.createElement('div');
+      el.className = `time-slot${isHappy ? ' happy' : ''}${isBooked ? ' booked' : ''}`;
+      el.textContent = label;
+      if (state.time === label) el.classList.add('active');
+
+      if (!isBooked) {
+        el.addEventListener('click', () => {
+          container.querySelectorAll('.time-slot').forEach(s => s.classList.remove('active'));
+          el.classList.add('active');
+          state.time = label;
+          state.isHappyHour = isHappy;
+          updateSummary();
+        });
+      }
+
+      container.appendChild(el);
+    }
+  }
+}
+
+function isSlotBooked(slotTime, newDurationMin) {
+  const [sh, sm] = slotTime.split(':').map(Number);
+  const newStart = sh * 60 + sm;
+  const newEnd   = newStart + newDurationMin;
+
+  return state.bookedSlots.some(booked => {
+    const [bh, bm] = booked.split(':').map(Number);
+    const bStart = bh * 60 + bm;
+
+    const bEnd = bStart + 60;
+    return newStart < bEnd && newEnd > bStart;
+  });
+}
+
+function updateSummary() {
+  const svcList   = document.getElementById('summary-svc-list');
+  const countEl   = document.getElementById('summary-svc-count');
+  const subtotalEl = document.getElementById('price-subtotal');
+  const specEl    = document.getElementById('price-specialist');
+  const happyEl   = document.getElementById('price-happy');
+  const totalEl   = document.getElementById('price-total');
+  const depositEl = document.getElementById('price-deposit');
+  const btnPay    = document.getElementById('btn-pay');
+
+  let base = 0;
+  const lines = [];
+
+  state.services.forEach(sid => {
+    const s = SERVICES.find(sv => sv.id === sid);
+    base += s.price;
+    lines.push(`<div class="summary-row"><span>${s.name}</span><span>$${s.price}</span></div>`);
+  });
+
+  svcList.innerHTML = lines.length
+    ? lines.join('')
+    : '<p class="summary-no-svc">No services selected yet.</p>';
+
+  countEl.textContent = state.services.length;
+
+  const specialist = SPECIALISTS.find(s => s.id === state.specialistId);
+  const specAdj    = specialist ? base * (specialist.mod - 1) : 0;
+  const afterSpec  = base + specAdj;
+  const happyDisc  = state.isHappyHour ? afterSpec * 0.15 : 0;
+  const total      = afterSpec - happyDisc;
+  const deposit    = total * 0.3;
+
+  state.total   = total;
+  state.deposit = deposit;
+
+  subtotalEl.textContent = `$${base.toFixed(2)}`;
+
+  const rowSpec = document.getElementById('row-specialist');
+  if (specAdj !== 0) {
+    rowSpec.classList.remove('hidden');
+    specEl.textContent = `${specAdj > 0 ? '+' : ''}$${specAdj.toFixed(2)}`;
+  } else {
+    rowSpec.classList.add('hidden');
+  }
+
+  const rowHappy = document.getElementById('row-happy');
+  if (happyDisc > 0) {
+    rowHappy.classList.remove('hidden');
+    happyEl.textContent = `−$${happyDisc.toFixed(2)}`;
+  } else {
+    rowHappy.classList.add('hidden');
+  }
+
+  totalEl.textContent   = `$${total.toFixed(2)}`;
+  depositEl.textContent = `$${deposit.toFixed(2)}`;
+
+  const canBook = state.services.length > 0 && state.specialistId && state.date && state.time;
+  btnPay.disabled = !canBook;
+}
+
+function bindPaymentModal() {
+  document.getElementById('btn-pay').addEventListener('click', openModal);
+  document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+  document.getElementById('confirm-pay-btn').addEventListener('click', processPayment);
+
+  document.getElementById('card-number').addEventListener('input', e => {
+    e.target.value = e.target.value.replace(/\D/g,'').slice(0,16)
+      .replace(/(.{4})/g,'$1 ').trim();
+  });
+  document.getElementById('card-expiry').addEventListener('input', e => {
+    let v = e.target.value.replace(/\D/g,'').slice(0,4);
+    if (v.length >= 3) v = v.slice(0,2) + '/' + v.slice(2);
+    e.target.value = v;
+  });
+}
+
+function openModal() {
+  document.getElementById('modal-amount').textContent = `$${state.deposit.toFixed(2)}`;
+  document.getElementById('payment-modal').classList.remove('hidden');
+}
+
+function closeModal() {
+  document.getElementById('payment-modal').classList.add('hidden');
+  document.getElementById('confirm-pay-btn').textContent = 'Pay Now';
+  document.getElementById('confirm-pay-btn').disabled = false;
+}
+
+async function processPayment() {
+  const btn = document.getElementById('confirm-pay-btn');
+  btn.textContent = 'Processing…';
+  btn.disabled = true;
+
+  try {
+    const dateStr = state.date.toISOString().split('T')[0];
+    const specialist = SPECIALISTS.find(s => s.id === state.specialistId);
+    const totalDuration = state.services.reduce((acc, sid) =>
+      acc + SERVICES.find(s => s.id === sid).duration, 0);
+
+    await sb.insert('bookings', {
+      specialist_id:    state.specialistId,
+      service_ids:      state.services,
+      date:             dateStr,
+      time_slot:        state.time + ':00',
+      duration_minutes: totalDuration,
+      total:            state.total,
+      deposit:          state.deposit,
+      is_happy_hour:    state.isHappyHour,
+      status:           'confirmed'
+    });
+
+    const receiptId = 'LG-' + Math.floor(Math.random() * 9000 + 1000);
+    alert(`Booking confirmed! Receipt ID: ${receiptId}\n${specialist.name} · ${dateStr} at ${state.time}\n\nSee you in Hollywood!`);
+    closeModal();
+    resetBooking();
+  } catch (err) {
+    const receiptId = 'LG-' + Math.floor(Math.random() * 9000 + 1000);
+    alert(`[DEMO] Booking confirmed! Receipt ID: ${receiptId}\n\nConnect Supabase to persist bookings.`);
+    closeModal();
+    resetBooking();
+  }
+}
+
+function resetBooking() {
+  state.services     = [];
+  state.specialistId = null;
+  state.date         = null;
+  state.time         = null;
+  state.isHappyHour  = false;
+  state.total        = 0;
+  state.deposit      = 0;
+  state.bookedSlots  = [];
+
+  document.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+  document.querySelectorAll('.spec-choice').forEach(b => b.classList.remove('active'));
+  document.getElementById('time-slots').innerHTML =
+    '<p class="slot-placeholder">Please select a date first.</p>';
+  renderCalendar();
+  updateSummary();
+}
+
+function setupAnimations() {
+  gsap.to('.hero-title',    { opacity: 1, y: 0, duration: 1.4, delay: 0.2, ease: 'power4.out' });
+  gsap.to('.hero-subtitle', { opacity: 1, y: 0, duration: 1.4, delay: 0.45, ease: 'power4.out' });
+  gsap.to('.hero-btn',      { opacity: 1, y: 0, duration: 1.4, delay: 0.7,  ease: 'power4.out' });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('hero-img').style.transform =
+      `scale(1.05) translateY(${window.scrollY * 0.08}px)`;
+  }, { passive: true });
+}
+init();
+</script>
+</body>
+</html>

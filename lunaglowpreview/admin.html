@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luna Glow · Studio Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-dark: #A8832D;
+      --bg: #F5F0E8;
+      --ivory: #FDFAF4;
+      --border: rgba(201,168,76,0.2);
+      --text: #2D2D2D;
+      --muted: #888;
+      --danger: #e05555;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .login-box {
+      background: white;
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+    }
+
+    .login-box .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 0.25rem;
+    }
+
+    .login-box .subtitle {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      border: 1px solid #e0e0e0;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus { border-color: var(--gold); }
+
+    .btn-gold {
+      width: 100%;
+      background: var(--gold);
+      color: white;
+      border: none;
+      padding: 0.9rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .btn-gold:hover   { background: var(--gold-dark); }
+    .btn-gold:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .error-msg {
+      font-size: 0.78rem;
+      color: var(--danger);
+      margin-top: 0.75rem;
+      text-align: center;
+      min-height: 1.2em;
+    }
+
+    #dashboard { display: none; min-height: 100vh; }
+
+    .topbar {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .user-badge {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .btn-logout {
+      background: none;
+      border: 1px solid var(--border);
+      padding: 0.45rem 1.1rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-logout:hover { border-color: var(--danger); color: var(--danger); }
+
+    .dash-main {
+      padding: 2.5rem 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+    }
+
+    .table-wrap {
+      background: white;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .table-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .filter-select {
+      border: 1px solid #e0e0e0;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.75rem;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .filter-select:focus { border-color: var(--gold); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    thead tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #f5f5f5;
+      vertical-align: middle;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--ivory); }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .badge-confirmed { background: #e8f5e9; color: #2e7d32; }
+    .badge-cancelled { background: #fce4ec; color: #c62828; }
+
+    .btn-cancel {
+      background: none;
+      border: 1px solid #eee;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.7rem;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-cancel:hover { border-color: var(--danger); color: var(--danger); }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-box">
+    <div class="logo">Luna Glow</div>
+    <div class="subtitle">Studio Dashboard · Secure Access</div>
+
+    <div class="form-group">
+      <label for="admin-email">Email</label>
+      <input type="email" id="admin-email" placeholder="owner@lunaglow.studio" autocomplete="email">
+    </div>
+    <div class="form-group">
+      <label for="admin-password">Password</label>
+      <input type="password" id="admin-password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+
+    <button id="login-btn" class="btn-gold">Sign In</button>
+    <p class="error-msg" id="login-error"></p>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-brand">Luna Glow · Dashboard</div>
+    <div class="topbar-right">
+      <span class="user-badge" id="user-email-label"></span>
+      <button class="btn-logout" id="logout-btn">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="dash-main">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Revenue</div>
+        <div class="stat-value" id="stat-revenue">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Deposits Collected</div>
+        <div class="stat-value" id="stat-deposits">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Active Bookings</div>
+        <div class="stat-value" id="stat-count">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Today's Appointments</div>
+        <div class="stat-value" id="stat-today">—</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="table-header">
+        <div class="table-title">Bookings</div>
+        <div class="filter-bar">
+          <select class="filter-select" id="filter-specialist">
+            <option value="">All Specialists</option>
+            <option value="spec1">Sophia</option>
+            <option value="spec2">Mia</option>
+            <option value="spec3">Ava</option>
+          </select>
+          <select class="filter-select" id="filter-status">
+            <option value="">All Statuses</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="table-loading" class="loading">Loading bookings…</div>
+
+      <table id="bookings-table" class="hidden">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date &amp; Time</th>
+            <th>Specialist</th>
+            <th>Services</th>
+            <th>Total</th>
+            <th>Deposit</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="bookings-tbody"></tbody>
+      </table>
+
+      <div id="empty-state" class="empty-state hidden">No bookings found.</div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+const SUPABASE_URL  = 'https://YOUR_PROJECT.supabase.co';
+const SUPABASE_ANON = 'YOUR_ANON_KEY';
+
+class SupabaseClient {
+  constructor(url, key) {
+    this.url = url;
+    this.key = key;
+    this.token = null; 
+  }
+
+  headers(extra = {}) {
+    return {
+      'apikey': this.key,
+      'Authorization': `Bearer ${this.token || this.key}`,
+      'Content-Type': 'application/json',
+      ...extra
+    };
+  }
+
+  async signIn(email, password) {
+    const r = await fetch(`${this.url}/auth/v1/token?grant_type=password`, {
+      method: 'POST',
+      headers: { 'apikey': this.key, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error_description || data.message || 'Login failed');
+    this.token = data.access_token;
+    this.user  = data.user;
+    return data;
+  }
+
+  async signOut() {
+    await fetch(`${this.url}/auth/v1/logout`, {
+      method: 'POST',
+      headers: this.headers()
+    });
+    this.token = null;
+    this.user  = null;
+  }
+
+  async select(table, params = '') {
+    const r = await fetch(
+      `${this.url}/rest/v1/${table}${params ? '?' + params : ''}`,
+      { headers: this.headers() }
+    );
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  }
+
+  async update(table, id, body) {
+    const r = await fetch(`${this.url}/rest/v1/${table}?id=eq.${id}`, {
+      method: 'PATCH',
+      headers: this.headers({ 'Prefer': 'return=representation' }),
+      body: JSON.stringify(body)
+    });
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  }
+
+  restoreSession() {
+    const saved = localStorage.getItem('lg_admin_session');
+    if (!saved) return false;
+    try {
+      const { token, user, expires_at } = JSON.parse(saved);
+      if (Date.now() / 1000 > expires_at) { localStorage.removeItem('lg_admin_session'); return false; }
+      this.token = token;
+      this.user  = user;
+      return true;
+    } catch { return false; }
+  }
+
+  saveSession(data) {
+    localStorage.setItem('lg_admin_session', JSON.stringify({
+      token: data.access_token,
+      user:  data.user,
+      expires_at: data.expires_at
+    }));
+  }
+
+  clearSession() {
+    localStorage.removeItem('lg_admin_session');
+  }
+}
+
+const sb = new SupabaseClient(SUPABASE_URL, SUPABASE_ANON);
+
+
+const SPECIALISTS = {
+  spec1: 'Sophia', spec2: 'Mia', spec3: 'Ava'
+};
+
+let allBookings = [];
+
+function init() {
+  if (sb.restoreSession()) {
+    showDashboard();
+    loadBookings();
+  }
+
+  document.getElementById('login-btn').addEventListener('click', handleLogin);
+  document.getElementById('admin-password').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleLogin();
+  });
+  document.getElementById('logout-btn').addEventListener('click', handleLogout);
+  document.getElementById('filter-specialist').addEventListener('change', renderTable);
+  document.getElementById('filter-status').addEventListener('change', renderTable);
+}
+
+async function handleLogin() {
+  const email    = document.getElementById('admin-email').value.trim();
+  const password = document.getElementById('admin-password').value;
+  const btn      = document.getElementById('login-btn');
+  const errEl    = document.getElementById('login-error');
+
+  errEl.textContent = '';
+  btn.textContent   = 'Signing in…';
+  btn.disabled      = true;
+
+  try {
+    const data = await sb.signIn(email, password);
+    sb.saveSession(data);
+    showDashboard();
+    loadBookings();
+  } catch (err) {
+    errEl.textContent = err.message;
+  } finally {
+    btn.textContent = 'Sign In';
+    btn.disabled    = false;
+  }
+}
+
+async function handleLogout() {
+  await sb.signOut();
+  sb.clearSession();
+  showLogin();
+}
+
+function showLogin() {
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('dashboard').style.display    = 'none';
+}
+
+function showDashboard() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display    = 'block';
+  if (sb.user?.email) {
+    document.getElementById('user-email-label').textContent = sb.user.email;
+  }
+}
+
+async function loadBookings() {
+  try {
+    allBookings = await sb.select('bookings', 'order=created_at.desc');
+    renderStats();
+    renderTable();
+    document.getElementById('table-loading').classList.add('hidden');
+    document.getElementById('bookings-table').classList.remove('hidden');
+  } catch (err) {
+    document.getElementById('table-loading').textContent =
+      'Could not load bookings. Check Supabase config.';
+  }
+}
+
+function renderStats() {
+  const confirmed = allBookings.filter(b => b.status === 'confirmed');
+  const today     = new Date().toISOString().split('T')[0];
+  const todayCount = confirmed.filter(b => b.date === today).length;
+
+  const totalRev  = confirmed.reduce((a, b) => a + (b.total   || 0), 0);
+  const totalDep  = confirmed.reduce((a, b) => a + (b.deposit || 0), 0);
+
+  document.getElementById('stat-revenue').textContent  = `$${totalRev.toFixed(2)}`;
+  document.getElementById('stat-deposits').textContent = `$${totalDep.toFixed(2)}`;
+  document.getElementById('stat-count').textContent    = confirmed.length;
+  document.getElementById('stat-today').textContent    = todayCount;
+}
+
+function renderTable() {
+  const specFilter   = document.getElementById('filter-specialist').value;
+  const statusFilter = document.getElementById('filter-status').value;
+
+  let rows = allBookings;
+  if (specFilter)   rows = rows.filter(b => b.specialist_id === specFilter);
+  if (statusFilter) rows = rows.filter(b => b.status === statusFilter);
+
+  const tbody   = document.getElementById('bookings-tbody');
+  const emptyEl = document.getElementById('empty-state');
+
+  if (rows.length === 0) {
+    tbody.innerHTML = '';
+    emptyEl.classList.remove('hidden');
+    return;
+  }
+
+  emptyEl.classList.add('hidden');
+  tbody.innerHTML = rows.map(b => `
+    <tr>
+      <td><code style="font-size:0.7rem;color:#aaa">${b.id.slice(0,8)}…</code></td>
+      <td>${b.date} &nbsp;${b.time_slot?.slice(0,5) || ''}</td>
+      <td>${SPECIALISTS[b.specialist_id] || b.specialist_id}</td>
+      <td style="max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+        ${(b.service_ids || []).join(', ')}
+      </td>
+      <td>$${(b.total  || 0).toFixed(2)}</td>
+      <td>$${(b.deposit|| 0).toFixed(2)}</td>
+      <td>
+        <span class="badge ${b.status === 'confirmed' ? 'badge-confirmed' : 'badge-cancelled'}">
+          ${b.status}
+        </span>
+      </td>
+      <td>
+        ${b.status === 'confirmed'
+          ? `<button class="btn-cancel" data-id="${b.id}">Cancel</button>`
+          : ''}
+      </td>
+    </tr>
+  `).join('');
+
+  tbody.querySelectorAll('.btn-cancel').forEach(btn => {
+    btn.addEventListener('click', () => cancelBooking(btn.dataset.id));
+  });
+}
+
+async function cancelBooking(id) {
+  if (!confirm('Cancel this appointment?')) return;
+  try {
+    await sb.update('bookings', id, { status: 'cancelled' });
+    const idx = allBookings.findIndex(b => b.id === id);
+    if (idx !== -1) allBookings[idx].status = 'cancelled';
+    renderStats();
+    renderTable();
+  } catch (err) {
+    alert('Could not cancel: ' + err.message);
+  }
+}
+
+
+init();
+</script>
+</body>
+</html>
