@@ -106,6 +106,7 @@
   .work-desc{font-size:.83rem;color:var(--muted);line-height:1.5;margin-bottom:1rem}
   .work-tags{display:flex;gap:.4rem;flex-wrap:wrap}
   .work-tag{font-size:.72rem;padding:3px 8px;border-radius:4px;background:var(--bg);border:1px solid var(--border);color:var(--muted)}
+  .green-tag{background:#e6f9f0;border-color:#86efac;color:#166534}
   .work-link{font-size:.82rem;color:var(--accent);font-weight:600;display:flex;align-items:center;gap:4px;margin-top:1rem}
   .work-link::after{content:"→";transition:transform .2s}
   .work-card:hover .work-link::after{transform:translateX(3px)}
