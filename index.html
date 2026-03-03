@@ -1,189 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daniel Apresian Site</title>
-
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta name="referrer" content="no-referrer">
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-  <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    img-src 'self' data:;
-    style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline';
-    font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:;
-    script-src 'self' https://cdn.jsdelivr.net;
-    connect-src 'self';
-  ">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=check_small,hourglass_bottom" />
-  <link rel="stylesheet" href="style.css">
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Daniel Apresian — Web Developer</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <header class="header">
-    <span class="logo">Web Developer</span>
-    <button id="theme-toggle" style="margin-left:20px;cursor:pointer;background:none;border:none;font-size:22px;" title="Toggle theme">🌙</button>
-  </header>
+<nav id="mainNav">
+  <div class="nav-logo">DA</div>
+  <ul class="nav-links">
+    <li><a href="#about" class="t" data-en="About" data-ru="Обо мне">About</a></li>
+    <li><a href="#process" class="t" data-en="Process" data-ru="Процесс">Process</a></li>
+    <li><a href="#portfolio" class="t" data-en="Portfolio" data-ru="Портфолио">Portfolio</a></li>
+    <li><a href="#pricing" class="t" data-en="Pricing" data-ru="Цены">Pricing</a></li>
+    <li><a href="#contact" class="t" data-en="Contact" data-ru="Контакт">Contact</a></li>
+  </ul>
+  <button class="lang-toggle" id="langBtn">
+    <span id="langFlag">🇷🇺</span>
+    <span id="langLabel">RU</span>
+  </button>
+</nav>
 
-  <div class="hero">
-    <div class="container hero__container">
-      <div class="hero__about">
-        <h1 class="hero__title">Web Developer</h1>
-        <h2 class="hero__subtitle">Daniel Apresian</h2>
-        <p class="hero__description">
-          Hi! I'm Daniel, a passionate web developer with a knack for creating sleek, user-friendly websites. I specialize in HTML, CSS, and JavaScript, and I'm always eager to learn new technologies and frameworks. Whether it's building responsive designs or optimizing performance, I love turning ideas into reality on the web.
-        </p>
-
-
-        <div class="hero__links">
-          <a class="hero__link" href="https://github.com/hiitaro" target="_blank"><i class='bx bxl-github'></i></a>
-          <a class="hero__link" href="https://www.linkedin.com/in/apresian-daniil-81b58136a" target="_blank"><i class='bx bxl-linkedin'></i></a>
-          <a class="hero__link" href="mailto:nakimerri@gmail.com" rel="noopener noreferrer"><i class='bx bxl-gmail'></i></a>
-          <a class="hero__link" href="https://t.me/luminave" target="_blank"><i class='bx bxl-telegram'></i></a>
-          <a class="hero__link" href="https://www.instagram.com/reminiscent1a/" target="_blank"><i class='bx bxl-instagram'></i></a>
-          <a class="hero__link" href="https://x.com/lluminave" target="_blank"><svg  xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24" ><path d="M13.68 10.62 20.24 3h-1.55L13 9.62 8.45 3H3.19l6.88 10.01L3.19 21h1.55l6.01-6.99 4.8 6.99h5.24l-7.13-10.38Zm-2.13 2.47-.7-1-5.54-7.93H7.7l4.47 6.4.7 1 5.82 8.32H16.3z"></path></svg></i></a>
-        </div>
-
-        <p class="hero__description">
-          <a href="#about-skills" class="skills-link">
-            My Works <span class="arrow">⮟</span>
-          </a>
-        </p>
-
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="section-label reveal t" data-en="Web Developer · Hollywood, FL" data-ru="Веб-разработчик · Голливуд, Флорида">Web Developer · Hollywood, FL</div>
+      <h1 class="reveal reveal-delay-1 t" data-en="I build sites<br>small businesses<br>actually need." data-ru="Делаю сайты,<br>которые нужны<br>малому бизнесу.">I build sites<br>small businesses<br>actually need.</h1>
+      <p class="hero-sub reveal reveal-delay-2 t" data-en="Clean, fast, mobile-ready websites. From idea to launch — without the agency overhead." data-ru="Чистые, быстрые, адаптивные сайты. От идеи до запуска — без агентских накруток.">Clean, fast, mobile-ready websites. From idea to launch — without the agency overhead.</p>
+      <div class="hero-cta reveal reveal-delay-3">
+        <a href="#portfolio" class="btn btn-primary t" data-en="See my work" data-ru="Смотреть работы">See my work</a>
+        <a href="#contact" class="btn btn-ghost t" data-en="Get in touch" data-ru="Написать мне">Get in touch</a>
       </div>
-
-      <div class="hero__box">
-        <img class="hero__box-img" src="11.png" alt="">
+      <div class="hero-badges reveal reveal-delay-4">
+        <span class="badge">HTML / CSS</span>
+        <span class="badge">JavaScript</span>
+        <span class="badge t" data-en="Responsive Design" data-ru="Адаптивная вёрстка">Responsive Design</span>
+        <span class="badge t" data-en="Fast Delivery" data-ru="Быстрая сдача">Fast Delivery</span>
+        <span class="badge t" data-en="Small Business Focus" data-ru="Малый бизнес">Small Business Focus</span>
       </div>
     </div>
-  </div>
-
-  <div class="about">
-    <div class="container">
-      <p class="hero__title" style="margin: 0;">Pricing:</p>
-      <div class="cards-grid">
-        <div class="price-card">
-          <img src="priceimage.png" style="border-radius: 10px;">
-          <p style="font-size: 18px;"><strong>Basic site package starts at <br><span style="font-size: 40px;">150$</span> </strong></p>
-          <p>This includes:</p>
-          <ul style="text-align: left; background-color: rgb(247, 247, 247); padding: 20px 40px; border-radius: 10px;">
-            <li>domain registration for one year</li>
-            <li>first-year hosting fees</li>
-            <li>professional one-page website</li>
-            <li>SEO-optimization</li>
-          </ul>
-          <p>Additional features or complex requirements may affect the final price; please contact me for a custom quote.</p>
-        </div>
+    <div class="hero-visual reveal reveal-delay-2">
+      <div class="hv-bar">
+        <div class="hv-dot r"></div><div class="hv-dot y"></div><div class="hv-dot g"></div>
+        <div class="hv-url"><span>yoursite.com</span></div>
       </div>
-    </div>
-  </div>
-
-
-  </div>
-  <div class="myworks" id="about-skills">
-    <div class="container">
-      <p class="hero__title" style="margin: 0;">My works:</p>
-      <div class="works-grid">
-        <div class="wcard">
-          <div class="wtitle">
-            <a href="barbershoppreview/barbershoppreview.html" class="pdf-icon">
-              <img src="blogo.png" alt="PDF" />
-            </a>
-            <a class="wtext" href="barbershoppreview/barbershoppreview.html">Haint's Barbershop & Salon</a>
+      <div class="hv-body">
+        <div class="hv-nav-strip"></div>
+        <div class="hv-hero-block">
+          <div class="hv-avatar">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="3.5" stroke="white" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
-          <div class="wdesc">
-            <p>Experience the perfect blend of classic barbering and modern salon techniques with <b>Haint's Barbershop & Salon</b>. Your confidence starts here. <br> <br>  Book your appointment today and discover a look that is uniquely yours.</p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <p class="patches-true"><span class="material-symbols-outlined" style="max-height: 10px; max-width: 10px; margin-right: 5px; color: white;">check_small</span>cross-platform</p>
-            <p class="patches-true" style="max-width: 80px;"><span class="material-symbols-outlined" style="max-height: 10px; max-width: 10px; margin-right: 5px; color: white;">check_small</span>SEO</p>
-            </div>
-            <p class="patches-true"><span class="material-symbols-outlined" style="max-height: 10px; max-width: 10px; margin-right: 5px; color: white;">check_small</span>load-optimized</p>
-            <p id="workDate" style="margin: 0; padding-top: 15px;">03.01.2026</p>    
-          </div>
+          <div class="hv-name">DANIEL APRESIAN</div>
+          <div class="hv-role">Web Developer</div>
         </div>
-
-        <div class="wcard">
-          <div class="wtitle">
-            <a href="catcafepreview/catcafepreview.html" class="pdf-icon">
-              <img src="clogo.png" alt="PDF" />
-            </a>
-            <a class="wtext" href="catcafepreview/catcafepreview.html">Whiskers & Coffee</a>
-          </div>
-          <div class="wdesc">
-            <p> Welcome to <b>Whiskers & Coffee</b> Cafe, where felines reign supreme! Our cozy space is designed for cat lovers and pet enthusiasts alike. <br> <br> Every purr you hear is a step toward a forever home. All our residents are available for adoption. </p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <p class="patches-true"><span class="material-symbols-outlined" style="max-height: 10px; max-width: 10px; margin-right: 5px; color: white;">check_small</span>cross-platform</p>
-            <p class="patches-true" style="max-width: 80px;"><span class="material-symbols-outlined" style="max-height: 10px; max-width: 10px; margin-right: 5px; color: white;">check_small</span>SEO</p>
-            </div>
-            <p class="patches-true"><span class="material-symbols-outlined" style="max-height: 10px; max-width: 10px; margin-right: 5px; color: white;">check_small</span>load-optimized</p>
-            <p id="workDate" style="margin: 0; padding-top: 15px;">03.02.2026</p>    
-          </div>
+        <div class="hv-cards">
+          <div class="hv-card"></div>
+          <div class="hv-card"></div>
+          <div class="hv-card"></div>
+          <div class="hv-card"></div>
         </div>
-
-        <div class="wcard">
-          <div class="wtitle">
-            <a href="sparkcleanpreview/sparkcleanpreview.html" class="pdf-icon">
-              <img src="slogo.png" alt="PDF" />
-            </a>
-            <a class="wtext" href="sparkcleanpreview/sparkcleanpreview.html">SparkClean Services</a>
-          </div>
-          <div class="wdesc">
-            <p> Reliable, high-quality residential and commercial cleaning in Hollywood, FL. We handle the dirty work so you don't have to.<br> <br> Try our services today and see the difference with <b>SparkClean Services</b>! </p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <p class="patches-true"><span class="material-symbols-outlined" style="max-height: 10px; max-width: 10px; margin-right: 5px; color: white;">check_small</span>cross-platform</p>
-            <p class="patches-true" style="max-width: 80px;"><span class="material-symbols-outlined" style="max-height: 10px; max-width: 10px; margin-right: 5px; color: white;">check_small</span>SEO</p>
-            </div>
-            <p class="patches-true"><span class="material-symbols-outlined" style="max-height: 10px; max-width: 10px; margin-right: 5px; color: white;">check_small</span>load-optimized</p>
-            <p id="workDate" style="margin: 0; padding-top: 15px;">03.03.2026</p>    
-          </div>
-        </div>
+        <div class="hv-cursor"></div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="pentestthing">
-    <div class="container">
-      <p class="hero__title" style="margin: 0;">Why Your Business Needs a Website</p>
-      <div class="pentestdisc">
-        <p>
-          In today's digital world, a strong online presence is <strong>essential for small businesses</strong>. More than ever, potential customers search online before making purchases or choosing services. If your business doesn't have a website, you're losing opportunities.
-        </p>
-        <p>
-          A well-designed website isn't just a digital brochure — it's a <strong>24/7 showcase</strong> of your brand, available to anyone, anywhere. It builds credibility and helps you stand out from competitors.
-        </p>
-        <ul>
-          <li>✅ Increase visibility and reach new customers online</li>
-          <li>🎯 Showcase your services and products professionally</li>
-          <li>💼 Build trust and credibility with potential clients</li>
-          <li>📱 Stay competitive in your industry with a modern, responsive design</li>
-          <li>🤝 Make it easy for customers to contact you and book services</li>
-        </ul>
-        <p>
-          A <strong>professional website is an investment in your future</strong>. Whether you're a salon, barbershop, consulting firm, or service provider, having an online presence is no longer optional — it's essential 🚀 for growth and success.
-        </p>
+<section id="about">
+  <div class="section-header reveal">
+    <div class="section-label"><span class="section-num">01</span><span class="t" data-en="About" data-ru="Обо мне">About</span></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal reveal-delay-1">
+      <h2 class="t" data-en="Hi, I'm Daniel." data-ru="Привет, я Даниэль.">Hi, I'm Daniel.</h2>
+      <p class="t" data-en="I'm a frontend developer specialising in landing pages and websites for local businesses. My goal is simple: give small businesses the online presence they deserve — without overcomplicating it." data-ru="Я фронтенд-разработчик, специализируюсь на лендингах и сайтах для локального бизнеса. Моя цель проста: дать малому бизнесу достойное онлайн-присутствие — без лишних сложностей.">I'm a frontend developer specialising in landing pages and websites for local businesses. My goal is simple: give small businesses the online presence they deserve — without overcomplicating it.</p>
+      <p class="t" data-en="Every project I deliver is hand-coded, load-optimised, and ready to work for you 24/7." data-ru="Каждый проект — это ручной код, оптимизированная загрузка и сайт, который работает на вас круглосуточно.">Every project I deliver is hand-coded, load-optimised, and ready to work for you 24/7.</p>
+      <div class="skills">
+        <span class="skill"><svg viewBox="0 0 32 32" fill="none"><path d="M4 0l2.4 27L16 30l9.6-3L28 0H4z" fill="#e44d26"/><path d="M16 27.4V2.6H26L23.9 25l-7.9 2.4z" fill="#f16529"/><path d="M16 12.4h-4.7l-.3-3.8H16V4.8H7.2l.1 1.5.9 10.1H16v-4zm0 9.8l-.1.1-3.9-1-.2-2.8H7.8l.5 5.5 7.7 2.1h.1v-4.9z" fill="#ebebeb"/><path d="M16 12.4v4h4.3l-.4 4.7-3.9 1v4.9l7.7-2.1.1-.6 1.2-13.5H16v1.6zm0-7.6v3.8h8.4l.1-1.2.1-1.2.1-1.4H16z" fill="#fff"/></svg>HTML5</span>
+        <span class="skill"><svg viewBox="0 0 32 32" fill="none"><path d="M4 0l2.4 27L16 30l9.6-3L28 0H4z" fill="#1572b6"/><path d="M16 27.4V2.6H26L23.9 25l-7.9 2.4z" fill="#33a9dc"/><path d="M16 13.6h-5l-.2-3.2H16V6.6H7.5L7.6 8l.8 9.4H16v-3.8zm0 7.8l-.1.1-3.5-.9-.2-2.5H8.2l.4 4.9 7.3 2h.1v-3.6z" fill="#ebebeb"/><path d="M16 13.6v3.8h4l-.4 4.3-3.6.9v3.6l7.3-2 .1-.5 1.1-12.1H16zm0-7v3.8h7.9l.1-1.1.1-1.1.1-1.6H16z" fill="#fff"/></svg>CSS3</span>
+        <span class="skill"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="3" fill="#f7df1e"/><path d="M9.5 25.3l2.3-1.4c.4.8.8 1.4 1.7 1.4.9 0 1.4-.4 1.4-1.8v-9.8h2.9v9.9c0 3-1.7 4.3-4.3 4.3-2.3 0-3.6-1.2-4.3-2.6h.3zM19.2 25l2.3-1.3c.6 1 1.4 1.7 2.7 1.7 1.2 0 1.9-.6 1.9-1.4 0-.9-.8-1.3-2.1-1.8l-.7-.3c-2.1-.9-3.5-2-3.5-4.4 0-2.2 1.7-3.8 4.3-3.8 1.9 0 3.2.7 4.2 2.4l-2.2 1.4c-.5-.9-1-1.3-1.9-1.3-.9 0-1.5.5-1.5 1.3 0 .9.6 1.3 1.9 1.8l.7.3c2.5 1.1 3.8 2.1 3.8 4.5 0 2.6-2 4-4.7 4-2.6 0-4.3-1.2-5.2-3z" fill="#323330"/></svg>JavaScript</span>
+        <span class="skill"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#888" stroke-width="1.5"/><rect x="16" y="7" width="6" height="7" rx="1.5" stroke="#888" stroke-width="1.5"/><path d="M6 18h6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>Responsive</span>
+        <span class="skill"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#888" stroke-width="1.5"/><path d="M16.5 16.5L21 21" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><path d="M8 11h6M11 8v6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>SEO basics</span>
+        <span class="skill"><svg viewBox="0 0 24 24" fill="none"><path d="M15 3l6 6-12 12-6-6 12-12z" stroke="#f05032" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7.5" cy="16.5" r="1.5" fill="#f05032"/><circle cx="16.5" cy="7.5" r="1.5" fill="#f05032"/><path d="M10.5 13.5a3 3 0 004.24 0" stroke="#f05032" stroke-width="1.5" stroke-linecap="round"/></svg>Git</span>
+      </div>
+    </div>
+    <div class="stat-grid reveal reveal-delay-2">
+      <div class="stat-card"><div class="stat-num">5+</div><div class="stat-desc t" data-en="Projects completed" data-ru="Завершённых проектов">Projects completed</div></div>
+      <div class="stat-card"><div class="stat-num">~2</div><div class="stat-desc t" data-en="Days avg. delivery" data-ru="Дней в среднем на сдачу">Days avg. delivery</div></div>
+      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-desc t" data-en="Mobile-ready" data-ru="Мобильная адаптация">Mobile-ready</div></div>
+      <div class="stat-card"><div class="stat-num">$0</div><div class="stat-desc t" data-en="Hidden fees" data-ru="Скрытых платежей">Hidden fees</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-header reveal">
+    <div class="section-label"><span class="section-num">02</span><span class="t" data-en="How it works" data-ru="Как это работает">How it works</span></div>
+  </div>
+  <h2 class="reveal reveal-delay-1 t" data-en="From brief to launch." data-ru="От брифа до запуска.">From brief to launch.</h2>
+  <div class="process-steps">
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div>
+        <div class="step-num t" data-en="Step 01" data-ru="Шаг 01">Step 01</div>
+        <div class="step-title t" data-en="Discovery" data-ru="Обсуждение">Discovery</div>
+        <p class="step-desc t" data-en="We talk about your business, goals, audience, and style preferences. I ask the right questions so nothing important gets missed." data-ru="Обсуждаем ваш бизнес, цели, аудиторию и стиль. Я задаю правильные вопросы, чтобы не упустить ничего важного.">We talk about your business, goals, audience, and style preferences. I ask the right questions so nothing important gets missed.</p>
+      </div>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <div>
+        <div class="step-num t" data-en="Step 02" data-ru="Шаг 02">Step 02</div>
+        <div class="step-title t" data-en="Development" data-ru="Разработка">Development</div>
+        <p class="step-desc t" data-en="I design and build your site from scratch — hand-coded, fast-loading, and fully responsive. You get a preview link to track progress." data-ru="Проектирую и верстаю сайт с нуля — ручной код, быстрая загрузка, полная адаптивность. Вы получаете ссылку для просмотра прогресса.">I design and build your site from scratch — hand-coded, fast-loading, and fully responsive. You get a preview link to track progress.</p>
+      </div>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div>
+        <div class="step-num t" data-en="Step 03" data-ru="Шаг 03">Step 03</div>
+        <div class="step-title t" data-en="Review & Launch" data-ru="Правки и запуск">Review & Launch</div>
+        <p class="step-desc t" data-en="You review the result and request any changes. Up to 2 rounds of revisions are included. Once you're happy — we go live." data-ru="Вы проверяете результат и вносите правки. Включено 2 раунда корректировок. Когда всё устраивает — запускаем.">You review the result and request any changes. Up to 2 rounds of revisions are included. Once you're happy — we go live.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <footer class="footer">
-    <div class="container">
-      <p class="footer__text">© 2026 Daniel Apresian</p>
-      <p class="footer__text">Made with ❤️</p>
+<section id="portfolio">
+  <div class="section-header reveal">
+    <div class="section-label"><span class="section-num">03</span><span class="t" data-en="Portfolio" data-ru="Портфолио">Portfolio</span></div>
+  </div>
+  <h2 class="reveal reveal-delay-1 t" data-en="Selected work." data-ru="Избранные работы.">Selected work.</h2>
+  <div class="works-grid">
+    <a class="work-card reveal reveal-delay-1" href="https://hiitaro.github.io/catcafepreview/catcafepreview.html" target="_blank">
+      <div class="work-thumb cat"></div>
+      <div class="work-info">
+        <div class="work-title">Whiskers & Coffee</div>
+        <div class="work-desc t" data-en="Cat café & adoption center. Warm branding, menu section, resident cats gallery." data-ru="Кошачье кафе и центр усыновления. Тёплый брендинг, меню, галерея кошек.">Cat café & adoption center. Warm branding, menu section, resident cats gallery.</div>
+        <div class="work-tags"><span class="work-tag">HTML</span><span class="work-tag">CSS</span><span class="work-tag">JS</span><span class="work-tag t" data-en="Landing page" data-ru="Лендинг">Landing page</span></div>
+        <div class="work-link t" data-en="View demo" data-ru="Смотреть демо">View demo</div>
+      </div>
+    </a>
+    <a class="work-card reveal reveal-delay-2" href="https://hiitaro.github.io/barbershoppreview/barbershoppreview.html" target="_blank">
+      <div class="work-thumb barber" style="font-size:2rem"></div>
+      <div class="work-info">
+        <div class="work-title">Haint's Barbershop & Salon</div>
+        <div class="work-desc t" data-en="Premium barbershop. Dark editorial aesthetic, services breakdown, photo gallery." data-ru="Премиум барбершоп. Тёмная редакционная эстетика, услуги, фотогалерея.">Premium barbershop. Dark editorial aesthetic, services breakdown, photo gallery.</div>
+        <div class="work-tags"><span class="work-tag">HTML</span><span class="work-tag">CSS</span><span class="work-tag">JS</span><span class="work-tag t" data-en="Landing page" data-ru="Лендинг">Landing page</span></div>
+        <div class="work-link t" data-en="View demo" data-ru="Смотреть демо">View demo</div>
+      </div>
+    </a>
+    <a class="work-card reveal reveal-delay-3" href="https://hiitaro.github.io/sparkcleanpreview/sparkcleanpreview.html" target="_blank">
+      <div class="work-thumb clean"></div>
+      <div class="work-info">
+        <div class="work-title">SparkClean Services</div>
+        <div class="work-desc t" data-en="Cleaning company. Trust-focused layout, pricing table, contact form." data-ru="Клининговая компания. Акцент на доверии, таблица цен, форма обратной связи.">Cleaning company. Trust-focused layout, pricing table, contact form.</div>
+        <div class="work-tags"><span class="work-tag">HTML</span><span class="work-tag">CSS</span><span class="work-tag">JS</span><span class="work-tag t" data-en="Landing page" data-ru="Лендинг">Landing page</span></div>
+        <div class="work-link t" data-en="View demo" data-ru="Смотреть демо">View demo</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-header reveal">
+    <div class="section-label"><span class="section-num">04</span><span class="t" data-en="Pricing" data-ru="Цены">Pricing</span></div>
+  </div>
+  <h2 class="reveal reveal-delay-1 t" data-en="Simple, honest pricing." data-ru="Простые и честные цены.">Simple, honest pricing.</h2>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name t" data-en="Starter" data-ru="Старт">Starter</div>
+      <div class="price-amount">$149</div>
+      <div class="price-period t" data-en="one-time" data-ru="единоразово">one-time</div>
+      <ul class="price-features">
+        <li class="t" data-en="1-page landing site" data-ru="Одностраничный лендинг">1-page landing site</li>
+        <li class="t" data-en="Mobile-responsive" data-ru="Мобильная адаптация">Mobile-responsive</li>
+        <li class="t" data-en="Contact section" data-ru="Секция с контактами">Contact section</li>
+        <li class="t" data-en="Domain + 1-year hosting" data-ru="Домен + хостинг на 1 год">1-year hosting</li>
+        <li class="t" data-en="Contact form" data-ru="Форма обратной связи">Contact form</li>
+        <li class="t" data-en="Delivered in 5 days" data-ru="Сдача за 5 дней">Delivered in 2 days</li>
+      </ul>
+      <a href="#contact" class="btn btn-ghost t" style="width:100%;text-align:center" data-en="Get started" data-ru="Начать">Get started</a>
     </div>
-  </footer>
+    <div class="price-card featured">
+      <div class="featured-badge t" data-en="Most popular" data-ru="Популярный">Most popular</div>
+      <div class="price-name t" data-en="Standard" data-ru="Стандарт">Standard</div>
+      <div class="price-amount">$400</div>
+      <div class="price-period t" data-en="one-time · incl. domain + hosting (1st yr)" data-ru="единоразово · домен + хостинг (1-й год)">one-time · incl. domain + hosting (1st yr)</div>
+      <ul class="price-features">
+        <li class="t" data-en="Multi-section landing page" data-ru="Многосекционный лендинг">Multi-section landing page</li>
+        <li class="t" data-en="Domain + 1-year hosting" data-ru="Домен + хостинг на 1 год">Domain + 1-year hosting</li>
+        <li class="t" data-en="Mobile-responsive" data-ru="Мобильная адаптация">Mobile-responsive</li>
+        <li class="t" data-en="Delivered in 7 days" data-ru="Сдача за 7 дней">Delivered in 7 days</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary t" style="width:100%;text-align:center" data-en="Get started" data-ru="Начать">Get started</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name t" data-en="Custom" data-ru="Под ключ">Custom</div>
+      <div class="price-amount t" data-en="Let's talk" data-ru="Обсудим">Let's talk</div>
+      <div class="price-period t" data-en="based on scope" data-ru="зависит от задачи">based on scope</div>
+      <ul class="price-features">
+        <li class="t" data-en="Complex multi-page site" data-ru="Многостраничный сайт">Complex multi-page site</li>
+        <li class="t" data-en="Custom functionality" data-ru="Нестандартный функционал">Custom functionality</li>
+        <li class="t" data-en="Integrations (forms, maps, etc.)" data-ru="Интеграции (формы, карты и др.)">Integrations (forms, maps, etc.)</li>
+        <li class="t" data-en="Priority support" data-ru="Приоритетная поддержка">Priority support</li>
+      </ul>
+      <a href="#contact" class="btn btn-ghost t" style="width:100%;text-align:center" data-en="Contact me" data-ru="Написать">Contact me</a>
+    </div>
+  </div>
+</section>
 
-  <script src="vulnsSort.js"></script>
-  <script src="theme.js"></script>
+<section id="contact">
+  <div class="section-header reveal">
+    <div class="section-label"><span class="section-num">05</span><span class="t" data-en="Contact" data-ru="Контакт">Contact</span></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal reveal-delay-1">
+      <h2 class="t" data-en="Let's build something." data-ru="Давайте сделаем что-то крутое.">Let's build something.</h2>
+      <p class="t" data-en="Have a project in mind? Reach out and I'll get back to you within 24 hours." data-ru="Есть проект? Напишите мне, и я отвечу в течение 24 часов.">Have a project in mind? Reach out and I'll get back to you within 24 hours.</p>
+      <div class="social-links">
+        <a class="social-link" href="mailto:stakanovvvv@gmail.com">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none"><path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" fill="#fff" stroke="#e8e8e5" stroke-width="1"/><path d="M2 6l10 7 10-7" stroke="#EA4335" stroke-width="1.5" stroke-linecap="round"/><path d="M2 6l4.5 6M22 6l-4.5 6" stroke="#4285F4" stroke-width="1.2" stroke-linecap="round" opacity=".5"/></svg>
+          Gmail
+        </a>
+        <a class="social-link" href="https://t.me/omnixy" target="_blank">
+          <svg class="social-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#29B6F6"/><path d="M5.5 11.5l11-4.5-1.5 9-3.5-2.5-2 2v-3l5-4.5-6.5 3.5-2.5-1z" fill="white"/></svg>
+          Telegram
+        </a>
+        <a class="social-link" href="https://x.com/lluminave" target="_blank">
+          <svg class="social-icon" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#000"/><path d="M13.5 10.9L18.8 5h-1.3l-4.6 5.2L9 5H5l5.6 7.9L5 19h1.3l4.9-5.5 3.9 5.5H19l-5.5-8.1zm-1.7 1.9l-.6-.8L6.8 6h2l3.7 5.1.6.8 4.7 6.6h-2l-4-5.7z" fill="white"/></svg>
+          X (Twitter)
+        </a>
+        <a class="social-link" href="https://github.com/hiitaro" target="_blank">
+          <svg class="social-icon" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" fill="#111"/></svg>
+          GitHub
+        </a>
+        <a class="social-link" href="https://www.instagram.com/reminiscent1a/" target="_blank">
+          <svg class="social-icon" viewBox="0 0 24 24"><defs><radialGradient id="ig" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="10%" stop-color="#fdf497"/><stop offset="50%" stop-color="#fd5949"/><stop offset="68%" stop-color="#d6249f"/><stop offset="100%" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6" fill="url(#ig)"/><rect x="7" y="7" width="10" height="10" rx="3" stroke="white" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="2.5" stroke="white" stroke-width="1.4" fill="none"/><circle cx="16.3" cy="7.7" r=".9" fill="white"/></svg>
+          Instagram
+        </a>
+        <a class="social-link" href="https://www.facebook.com/profile.php?id=61561815989650" target="_blank">
+          <svg class="social-icon" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#1877F2"/><path d="M16 8h-2a1 1 0 00-1 1v2h3l-.5 3H13v7h-3v-7H8v-3h2V9a4 4 0 014-4h2v3z" fill="white"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="contact-form">
+        <div class="form-group">
+          <label class="t" data-en="Your name" data-ru="Ваше имя">Your name</label>
+          <input type="text" id="fname" placeholder="John Smith"/>
+        </div>
+        <div class="form-group">
+          <label class="t" data-en="Email" data-ru="Email">Email</label>
+          <input type="text" id="fcontact" placeholder="email@example.com"/>
+        </div>
+        <div class="form-group">
+          <label class="t" data-en="Tell me about your project" data-ru="Расскажите о вашем проекте">Tell me about your project</label>
+          <textarea id="fmsg" rows="4" placeholder="..."></textarea>
+        </div>
+        <button class="btn btn-primary t" id="fsubmit" data-en="Send message" data-ru="Отправить" onclick="handleSubmit()">Send message</button>
+        <div class="form-submitted t" id="fconfirm" data-en="✓ Got it! I'll be in touch soon." data-ru="✓ Получил! Скоро свяжусь с вами.">✓ Got it! I'll be in touch soon.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Daniel Apresian</p>
+  <p class="t" style="font-size:.8rem;color:var(--muted)" data-en="Built with HTML, CSS & JS" data-ru="Сделано на HTML, CSS и JS">Built with HTML, CSS & JS</p>
+</footer>
+
+<script>
+  const FLAGS = {en:{flag:'🇷🇺',label:'RU'},ru:{flag:'🇺🇸',label:'EN'}};
+  let lang='en';
+  const langBtn=document.getElementById('langBtn');
+  function applyLang(){
+    document.querySelectorAll('.t').forEach(el=>{const v=el.getAttribute('data-'+lang);if(v)el.innerHTML=v});
+    document.getElementById('langFlag').textContent=FLAGS[lang].flag;
+    document.getElementById('langLabel').textContent=FLAGS[lang].label;
+    document.documentElement.lang=lang;
+  }
+  langBtn.addEventListener('click',()=>{lang=lang==='en'?'ru':'en';applyLang()});
+
+  const nav=document.getElementById('mainNav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const pGrid=document.querySelector('.pricing-grid');
+  const pCards=document.querySelectorAll('.price-card');
+  let pDone=false;
+  new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting&&!pDone){
+        pDone=true;
+        pCards.forEach((c,i)=>setTimeout(()=>c.classList.add('visible'),i*150));
+      }
+    });
+  },{threshold:.15}).observe(pGrid);
+
+  function handleSubmit(){
+    const n=document.getElementById('fname').value.trim();
+    const c=document.getElementById('fcontact').value.trim();
+    if(!n||!c){alert(lang==='en'?'Please fill in name and contact.':'Заполните имя и контакт.');return}
+    document.getElementById('fsubmit').style.display='none';
+    const conf=document.getElementById('fconfirm');
+    conf.style.display='block';
+    conf.innerHTML=lang==='en'?"✓ Got it! I'll be in touch soon.":'✓ Получил! Скоро свяжусь с вами.';
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-70,behavior:'smooth'})}
+    });
+  });
+</script>
 </body>
-
 </html>
