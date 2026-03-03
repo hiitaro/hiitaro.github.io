@@ -12,6 +12,11 @@
     --shadow: 0 10px 30px rgba(141, 119, 95, 0.08);
 }
 
+::selection {
+  background-color: var(--muted-pink); /* Цвет фона выделения */
+  color: var(--white);            /* Цвет текста при выделении */
+}
+
 * {
     margin: 0;
     padding: 0;

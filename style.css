@@ -150,6 +150,7 @@ body.dark-theme .hero__box-img {
   align-items: center;
   background-color: var(--color-bg-light);
   color: var(--color-black);
+  padding: 60px 0;
 }
 
 .card-grid {
@@ -168,6 +169,30 @@ body.dark-theme .hero__box-img {
   box-shadow: 0 4px 6px var(--color-card-shadow);
   transition: transform 0.2s ease;
   text-align: center;
+}
+
+.cards-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 380px));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.price-card {
+  background-color: var(--color-white);
+  color: var(--color-card-text);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 6px var(--color-card-shadow);
+  transition: transform 0.2s ease;
+  text-align: center;
+  width: 100%;
+}
+
+.price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px var(--color-card-shadow);
 }
 
 .card:hover {
@@ -339,10 +364,15 @@ i {
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 6px var(--color-bg-light);
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
   width: 100%;
   max-width: 300px;
   margin: 0;
+}
+
+.wcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px var(--color-card-shadow);
 }
 
 .wtitle {
@@ -371,6 +401,10 @@ i {
   color: var(--color-black);
 }
 
+.wtext:hover {
+  color: var(--color-blue);
+}
+
 .wdesc {
   margin-top: 8px;
   font-size: 14px;
@@ -383,13 +417,44 @@ i {
 
 .pentestthing {
   color: var(--color-black);
-  min-height: 60vh;
+  min-height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--color-bg-light);
 }
 
+/* Smooth hover/transitions for interactive elements */
+a,
+button,
+.hero__link,
+.wtext,
+.pdf-icon img,
+.hero__box,
+.hero__box-img {
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease !important;
+}
+.hero__link i,
+.hero__link svg,
+.hero__links i,
+.bx,
+.material-symbols-outlined {
+  display: inline-block;
+  transition: transform 0.18s ease, color 0.18s ease, opacity 0.18s ease, fill 0.18s ease;
+  will-change: transform, opacity;
+}
+.hero__link:hover i,
+.hero__link:hover svg,
+.hero__link:hover .bx,
+.hero__link:hover .material-symbols-outlined {
+  transform: translateY(-1px) scale(1.06);
+  opacity: 0.95;
+  color: var(--color-blue);
+  fill: currentColor;
+}
+.skills-link:hover .arrow {
+  transform: translateY(-3px);
+}
 .pentestdisc{
   font-size: 20px;
 }
@@ -411,10 +476,19 @@ body,
 .card,
 .wcard,
 footer {
-  transition: background-color 0.4s, color 0.4s, box-shadow 0.4s;
+  transition: background-color 0.4s, color 0.4s, box-shadow 0.4s, transform 0.2s ease;
 }
 
 @media screen and (max-width: 640px) {
+
+  .cards-grid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 420px));
+    gap: 20px;
+    margin-top: 30px;
+  }
   .hero__container {
     flex-direction: column-reverse;
     gap: 20px;
@@ -569,6 +643,15 @@ footer {
 }
 
 @media screen and (max-width: 768px) and (min-width: 481px) {
+  .cards-grid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 420px));
+    gap: 20px;
+    margin-top: 30px;
+  }
+
   .header {
     padding: 14px 0;
     margin-bottom: 20px;
