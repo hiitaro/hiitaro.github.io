@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuroha Kissaten — Slow Coffee. Quiet Moments.</title>
+  <meta name="description" content="Traditional Japanese coffee house in Hollywood, Florida. Hand-drip coffee, matcha, and quiet moments. Open daily 8 AM – 6 PM." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="scroll-indicator" aria-hidden="true"></div>
+
+  <nav id="main-nav" aria-label="Main navigation">
+
+    <a href="#hero" class="nav__logo" aria-label="Go to top">
+      黒羽 <span class="nav__logo-jp">Kuroha</span>
+    </a>
+    <ul class="nav__links" id="nav-links-desktop" role="list">
+      <li><a href="#philosophy" data-section="philosophy">Philosophy</a></li>
+      <li><a href="#drinks"     data-section="drinks">Menu</a></li>
+      <li><a href="#atmosphere" data-section="atmosphere">Atmosphere</a></li>
+      <li><a href="#desserts"   data-section="desserts">Sweets</a></li>
+      <li><a href="#visit"      data-section="visit">Visit</a></li>
+    </ul>
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+
+  <div class="nav__overlay" id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <ul role="list">
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#drinks">Menu</a></li>
+      <li><a href="#atmosphere">Atmosphere</a></li>
+      <li><a href="#desserts">Sweets</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <span class="nav__overlay-jp jp">ゆっくりとした珈琲</span>
+  </div>
+
+  <section id="hero" aria-label="Hero">
+
+    <div class="hero__bg" aria-hidden="true">
+  <svg class="hero__bg-svg"
+       xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 1440 900"
+       preserveAspectRatio="xMidYMid slice">
+    <circle class="hero__svg-ring hero__svg-ring--outer" cx="976" cy="450" r="320"/>
+    <circle class="hero__svg-ring hero__svg-ring--inner" cx="976" cy="450" r="245"/>
+  </svg>
+
+  <div class="hero__bg-inner" id="parallax-bg"></div>
+</div>
+    <span class="hero__kanji-bg" aria-hidden="true">珈琲</span>
+    <div class="hero__vline" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <span class="hero__kana jp">黒羽喫茶店 · Hollywood, Florida</span>
+      <h1 class="hero__title display">Kuroha<br />Kissaten</h1>
+      <p class="hero__tagline">Slow Coffee.<span class="dot" aria-hidden="true"></span>Quiet Moments.</p>
+      <div class="hero__cta">
+        <a href="#drinks" class="btn">View Menu</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+
+  </section>
+  <section id="philosophy" aria-labelledby="philosophy-heading">
+    <div class="philosophy__inner">
+      <span class="section__label reveal" style="color:rgba(201,169,110,0.7);">— 哲学 Philosophy</span>
+      <h2 id="philosophy-heading" class="display philosophy__heading reveal d1">The Art of<br />Waiting.</h2>
+      <hr class="rule--h-gold reveal--line d2" style="max-width:180px; margin:2.2rem 0;" />
+      <p class="philosophy__text reveal d2">
+        In Japan, the kissaten — the traditional coffee house — is not simply a place to drink.
+        It is a practice. A deliberate pause in the rhythm of the day, where time is measured
+        not in seconds but in the slow spiral of steam rising from a freshly poured cup.
+      </p>
+      <p class="philosophy__text reveal d3">
+        At Kuroha, we brew every cup by hand. Our pour-overs trace the same careful arc
+        practiced in postwar Tokyo kissatens, where the ritual of hand-drip coffee became a quiet
+        form of meditation. Water temperature. Grind size. The bloom. Each variable honored. Nothing rushed.
+      </p>
+      <blockquote class="philosophy__aside reveal d4">
+        "To wait for good coffee is to practice the art of being present."
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="drinks" aria-labelledby="drinks-heading">
+    <div class="drinks__header">
+      <div>
+        <span class="section__label reveal">— 飲み物 Signature Drinks</span>
+        <h2 id="drinks-heading" class="display drinks__heading reveal d1">The Menu</h2>
+      </div>
+      <p class="drinks__subtitle reveal d2">All drinks prepared to order.<br />Open daily 8 AM – 6 PM.</p>
+    </div>
+
+    <div class="drinks__grid" role="list">
+
+      <article class="drink-card reveal" role="listitem">
+        <span class="drink-card__bg" aria-hidden="true">一</span>
+        <span class="drink-card__num">01</span>
+        <h3 class="display drink-card__name">Matcha Latte</h3>
+        <p class="drink-card__desc">Ceremonial-grade matcha whisked with warm oat milk. Earthy, grassy, and gently sweet.</p>
+        <span class="drink-card__price">$7.50</span>
+      </article>
+
+      <article class="drink-card reveal d1" role="listitem">
+        <span class="drink-card__bg" aria-hidden="true">二</span>
+        <span class="drink-card__num">02</span>
+        <h3 class="display drink-card__name">Hand-Drip Coffee</h3>
+        <p class="drink-card__desc">Single-origin beans, poured with patience. Rotating origins — ask your barista what's brewing.</p>
+        <span class="drink-card__price">$6.00</span>
+      </article>
+
+      <article class="drink-card reveal d2" role="listitem">
+        <span class="drink-card__bg" aria-hidden="true">三</span>
+        <span class="drink-card__num">03</span>
+        <h3 class="display drink-card__name">Hojicha Latte</h3>
+        <p class="drink-card__desc">Roasted green tea with deep caramel warmth. Low in caffeine. High in comfort.</p>
+        <span class="drink-card__price">$7.00</span>
+      </article>
+
+      <article class="drink-card reveal d3" role="listitem">
+        <span class="drink-card__bg" aria-hidden="true">四</span>
+        <span class="drink-card__num">04</span>
+        <h3 class="display drink-card__name">Yuzu Espresso Tonic</h3>
+        <p class="drink-card__desc">Double espresso over sparkling tonic, brightened with yuzu citrus. Unexpected. Refreshing.</p>
+        <span class="drink-card__price">$8.50</span>
+      </article>
+
+    </div>
+  </section>
+  <section id="atmosphere" aria-labelledby="atmosphere-heading">
+    <span class="section__label reveal" style="color:rgba(245,240,232,0.45);">— 空間 Interior</span>
+    <h2 id="atmosphere-heading" class="display atmosphere__heading reveal d1">A Space to<br />Breathe.</h2>
+
+    <div class="gallery__kintsugi reveal--line d2" aria-hidden="true"></div>
+
+    <div class="gallery" role="list" aria-label="Interior photo gallery">
+      <div class="gallery__item reveal" role="listitem">
+        <div class="gallery__placeholder gallery__placeholder--1">
+          <span class="gallery__icon" aria-hidden="true">茶</span>
+          <span class="gallery__label">Main Counter</span>
+        </div>
+      </div>
+      <div class="gallery__item reveal d1" role="listitem">
+        <div class="gallery__placeholder gallery__placeholder--2">
+          <span class="gallery__icon" aria-hidden="true">珈</span>
+          <span class="gallery__label">Pour-Over Station</span>
+        </div>
+      </div>
+      <div class="gallery__item reveal d2" role="listitem">
+        <div class="gallery__placeholder gallery__placeholder--3">
+          <span class="gallery__icon" aria-hidden="true">窓</span>
+          <span class="gallery__label">Window Seating</span>
+        </div>
+      </div>
+      <div class="gallery__item reveal d3" role="listitem">
+        <div class="gallery__placeholder gallery__placeholder--4">
+          <span class="gallery__icon" aria-hidden="true">間</span>
+          <span class="gallery__label">Quiet Corner</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="desserts" aria-labelledby="desserts-heading">
+    <div class="desserts__layout">
+      <div>
+        <span class="section__label reveal">— 甘味 Tea &amp; Dessert</span>
+        <h2 id="desserts-heading" class="display desserts__intro-heading reveal d1">Pairings &amp;<br />Sweets.</h2>
+        <div class="mon-divider reveal d2" aria-hidden="true">
+          <span class="mon-divider__icon">◆ ◆ ◆</span>
+        </div>
+        <p class="desserts__intro-text reveal d2">
+          Carefully chosen confections from Japanese tradition. Each pairing is meant to
+          complement — never compete with — your drink. Simple. Honest. Made with care.
+        </p>
+      </div>
+      <div class="desserts__cards">
+        <article class="dessert-card reveal">
+          <div class="dessert-card__icon" aria-hidden="true">銅</div>
+          <div>
+            <h3 class="display dessert-card__name">Dorayaki</h3>
+            <p class="dessert-card__desc">Fluffy pancakes filled with sweet azuki red bean paste. A Japanese classic.</p>
+          </div>
+        </article>
+        <article class="dessert-card reveal d1">
+          <div class="dessert-card__icon" aria-hidden="true">餅</div>
+          <div>
+            <h3 class="display dessert-card__name">Mochi</h3>
+            <p class="dessert-card__desc">Soft rice cake filled with seasonal flavors. Ask your server for today's selection.</p>
+          </div>
+        </article>
+        <article class="dessert-card reveal d2">
+          <div class="dessert-card__icon" aria-hidden="true">糕</div>
+          <div>
+            <h3 class="display dessert-card__name">Castella Cake</h3>
+            <p class="dessert-card__desc">A Nagasaki-style honey sponge with a tender, dense crumb. Pairs beautifully with hand-drip coffee.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section id="visit" aria-labelledby="visit-heading">
+    <div class="visit__inner">
+      <div>
+        <span class="section__label reveal" style="color:var(--red-muted);">— 場所 Find Us</span>
+        <h2 id="visit-heading" class="display visit__heading reveal d1">Come in.<br />Stay a while.</h2>
+        <div class="visit__detail reveal d2">
+          <span class="visit__detail-label">Address</span>
+          <p class="visit__detail-value">2210 Hollywood Blvd<br />Hollywood, Florida 33020<br />United States</p>
+        </div>
+        <div class="visit__detail reveal d3">
+          <span class="visit__detail-label">Hours</span>
+          <p class="visit__detail-value">Monday – Sunday · 8:00 AM – 6:00 PM</p>
+        </div>
+        <div class="visit__detail reveal d4">
+          <span class="visit__detail-label">Contact</span>
+          <p class="visit__detail-value">
+            <a href="/cdn-cgi/l/email-protection#39515c55555679524c4b56515852504a4a584d5c57175a5654"><span class="__cf_email__" data-cfemail="3c54595050537c57494e53545d57554f4f5d485952125f5351">[email&#160;protected]</span></a><br />
+            <a href="tel:+19545550182">(954) 555-0182</a>
+          </p>
+        </div>
+        <a href="/cdn-cgi/l/email-protection#4b232e2727240b203e3924232a202238382a3f2e2565282426" class="btn btn--red reveal d5" style="margin-top:1.8rem; display:inline-block;">Get in Touch</a>
+      </div>
+      <div class="map-placeholder reveal--right d2" role="img" aria-label="Map placeholder — 2210 Hollywood Blvd, Hollywood FL">
+        <div class="map-placeholder__pin" aria-hidden="true">⊕</div>
+        <p class="map-placeholder__addr">2210 Hollywood Blvd<br />Hollywood, FL 33020</p>
+        <span class="map-placeholder__text">Map Coming Soon</span>
+      </div>
+    </div>
+  </section>
+  <footer role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__left">
+        <span class="footer__logo">黒羽 Kuroha Kissaten</span>
+        <span class="footer__phrase jp">おかえりなさい — Okaerinasai</span>
+        <span class="footer__hours">Open Daily · 8 AM – 6 PM · Hollywood, FL</span>
+      </div>
+      <div class="footer__right">
+        <a href="https://instagram.com/kurohakissaten" target="_blank" rel="noopener noreferrer"
+           class="footer__instagram" aria-label="Follow us on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+          @kurohakissaten
+        </a>
+        <span class="footer__copy">© 2025 Kuroha Kissaten. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+</html>
