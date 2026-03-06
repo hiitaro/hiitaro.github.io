@@ -328,14 +328,43 @@
     });
   },{threshold:.15}).observe(pGrid);
 
-  function handleSubmit(){
-    const n=document.getElementById('fname').value.trim();
-    const c=document.getElementById('fcontact').value.trim();
-    if(!n||!c){alert(lang==='en'?'Please fill in name and contact.':'Заполните имя и контакт.');return}
-    document.getElementById('fsubmit').style.display='none';
-    const conf=document.getElementById('fconfirm');
-    conf.style.display='block';
-    conf.innerHTML=lang==='en'?"✓ Got it! I'll be in touch soon.":'✓ Получил! Скоро свяжусь с вами.';
+  async function handleSubmit(){
+    const n = document.getElementById('fname').value.trim();
+    const c = document.getElementById('fcontact').value.trim();
+    const msg = document.getElementById('fmsg').value.trim();
+
+    if(!n || !c){
+      alert(lang==='en' ? 'Please fill in name and contact.' : 'Заполните имя и контакт.');
+      return;
+    }
+
+    const btn = document.getElementById('fsubmit');
+    btn.disabled = true;
+    btn.textContent = lang==='en' ? 'Sending...' : 'Отправляем...';
+
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: '51874093-cf73-4121-b46b-9413ee52859a',
+        name: n,
+        email: c,
+        message: msg
+      })
+    });
+
+    const data = await res.json();
+
+    if(data.success){
+      btn.style.display = 'none';
+      const conf = document.getElementById('fconfirm');
+      conf.style.display = 'block';
+      conf.innerHTML = lang==='en' ? "✓ Got it! I'll be in touch soon." : '✓ Получил! Скоро свяжусь с вами.';
+    } else {
+      btn.disabled = false;
+      btn.textContent = lang==='en' ? 'Send message' : 'Отправить';
+      alert(lang==='en' ? 'Something went wrong. Try again.' : 'Ошибка. Попробуйте ещё раз.');
+    }
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
