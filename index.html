@@ -5,6 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Daniel Apresian — Web Developer</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  .form-error {
+    display: none;
+    margin-top: 12px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    background: #fff0f0;
+    border: 1px solid #f5c6c6;
+    color: #c0392b;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .form-error .form-error-icon {
+    font-size: 1.1rem;
+    margin-right: 6px;
+  }
+  .form-error .form-error-hint {
+    display: block;
+    margin-top: 6px;
+    color: #888;
+    font-size: 0.82rem;
+  }
+</style>
 </head>
 <body>
 
@@ -244,7 +267,7 @@
       <h2 class="t" data-en="Let's build something." data-ru="Давайте сделаем что-то крутое.">Let's build something.</h2>
       <p class="t" data-en="Have a project in mind? Reach out and I'll get back to you within 24 hours." data-ru="Есть проект? Напишите мне, и я отвечу в течение 24 часов.">Have a project in mind? Reach out and I'll get back to you within 24 hours.</p>
       <div class="social-links">
-        <a class="social-link" href="mailto:stakanovvvv@gmail.com">
+        <a class="social-link" href="/cdn-cgi/l/email-protection#047770656f656a6b72727272446369656d682a676b69">
           <svg class="social-icon" viewBox="0 0 24 24" fill="none"><path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" fill="#fff" stroke="#e8e8e5" stroke-width="1"/><path d="M2 6l10 7 10-7" stroke="#EA4335" stroke-width="1.5" stroke-linecap="round"/><path d="M2 6l4.5 6M22 6l-4.5 6" stroke="#4285F4" stroke-width="1.2" stroke-linecap="round" opacity=".5"/></svg>
           Gmail
         </a>
@@ -286,6 +309,7 @@
         </div>
         <button class="btn btn-primary t" id="fsubmit" data-en="Send message" data-ru="Отправить" onclick="handleSubmit()">Send message</button>
         <div class="form-submitted t" id="fconfirm" data-en="✓ Got it! I'll be in touch soon." data-ru="✓ Получил! Скоро свяжусь с вами.">✓ Got it! I'll be in touch soon.</div>
+        <div class="form-error" id="ferror"></div>
       </div>
     </div>
   </div>
@@ -296,7 +320,7 @@
   <p class="t" style="font-size:.8rem;color:var(--muted)" data-en="Built with HTML, CSS & JS" data-ru="Сделано на HTML, CSS и JS">Built with HTML, CSS & JS</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const FLAGS = {en:{flag:'🇷🇺',label:'RU'},ru:{flag:'🇺🇸',label:'EN'}};
   let lang='en';
   const langBtn=document.getElementById('langBtn');
@@ -341,6 +365,7 @@
     const btn = document.getElementById('fsubmit');
     btn.disabled = true;
     btn.textContent = lang==='en' ? 'Sending...' : 'Отправляем...';
+    document.getElementById('ferror').style.display = 'none';
 
     const res = await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -366,14 +391,25 @@
     } else {
       btn.disabled = false;
       btn.textContent = lang==='en' ? 'Send message' : 'Отправить';
-      alert(lang==='en' ? 'Something went wrong. Try again.' : 'Ошибка. Попробуйте ещё раз.');
+      const err = document.getElementById('ferror');
+      const isSpam = data.message && data.message.toLowerCase().includes('spam');
+      if(lang === 'en') {
+        err.innerHTML = isSpam
+          ? '<span class="form-error-icon">🚫</span>Your message was flagged as spam by the server.<span class="form-error-hint">Try rephrasing your message, or reach out directly via email or Telegram.</span>'
+          : '<span class="form-error-icon">⚠️</span>Something went wrong. Please try again.<span class="form-error-hint">If the issue persists, contact me directly.</span>';
+      } else {
+        err.innerHTML = isSpam
+          ? '<span class="form-error-icon">🚫</span>Сервер пометил сообщение как спам.<span class="form-error-hint">Попробуйте перефразировать текст или напишите напрямую — через email или Telegram.</span>'
+          : '<span class="form-error-icon">⚠️</span>Что-то пошло не так. Попробуйте ещё раз.<span class="form-error-hint">Если проблема не исчезнет — напишите напрямую.</span>';
+      }
+      err.style.display = 'block';
     }
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
       const t=document.querySelector(a.getAttribute('href'));
-      if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-70,behavior:'smooth'})}
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
     });
   });
 </script>
