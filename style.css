@@ -1,7 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Stick&display=swap');
 
-/* ─── Variables ─────────────────────────────────────────────── */
 
 :root {
     --bg:           #f9f8f6;
@@ -16,7 +15,6 @@
     --nav-h:        60px;
 }
 
-/* ─── Reset ─────────────────────────────────────────────────── */
 
 * {
     box-sizing: border-box;
@@ -36,7 +34,6 @@ body {
     line-height: 1.6;
 }
 
-/* ─── Nav ───────────────────────────────────────────────────── */
 
 nav {
     position:        fixed;
@@ -104,7 +101,7 @@ nav.scrolled {
     background: var(--border);
 }
 
-/* ─── Reveal animations ─────────────────────────────────────── */
+
 
 .reveal {
     opacity:    0;
@@ -123,7 +120,6 @@ nav.scrolled {
 .reveal-delay-3 { transition-delay: .3s; }
 .reveal-delay-4 { transition-delay: .4s; }
 
-/* ─── Sections ──────────────────────────────────────────────── */
 
 section {
     padding:    100px 5vw;
@@ -163,7 +159,6 @@ section {
     font-variant-numeric:  tabular-nums;
 }
 
-/* ─── Typography ────────────────────────────────────────────── */
 
 h1 {
     font-family:    var(--font-display);
@@ -181,7 +176,6 @@ h2 {
     margin-bottom:  2.5rem;
 }
 
-/* ─── Hero ──────────────────────────────────────────────────── */
 
 #hero {
     padding-top:     140px;
@@ -267,7 +261,7 @@ h2 {
     transform: scale(1.05);
 }
 
-/* ─── Hero visual (browser mockup) ─────────────────────────── */
+
 
 .hero-visual {
     width:         280px;
@@ -415,7 +409,6 @@ h2 {
     50%        { box-shadow: 0 0 0 7px rgba(37, 99, 235, .05); }
 }
 
-/* ─── About ─────────────────────────────────────────────────── */
 
 #about {
     border-top: 1px solid var(--border);
@@ -507,7 +500,7 @@ h2 {
 
 .stat-num {
     font-family:    var(--font-display);
-    font-size:      2.2rem;
+    font-size:      2.8rem;
     font-weight:    800;
     letter-spacing: -.04em;
     color:          var(--fg);
@@ -519,7 +512,6 @@ h2 {
     margin-top: .25rem;
 }
 
-/* ─── Process ───────────────────────────────────────────────── */
 
 #process {
     border-top: 1px solid var(--border);
@@ -604,7 +596,6 @@ h2 {
     max-width:   220px;
 }
 
-/* ─── Portfolio ─────────────────────────────────────────────── */
 
 #portfolio {
     border-top: 1px solid var(--border);
@@ -705,7 +696,7 @@ h2 {
     transform: translateX(3px);
 }
 
-/* ─── Pricing ───────────────────────────────────────────────── */
+
 
 #pricing {
     border-top: 1px solid var(--border);
@@ -808,7 +799,6 @@ h2 {
     flex-shrink: 0;
 }
 
-/* ─── Contact ───────────────────────────────────────────────── */
 
 #contact {
     border-top:     1px solid var(--border);
@@ -920,8 +910,6 @@ h2 {
     text-align:    center;
 }
 
-/* ─── Footer ────────────────────────────────────────────────── */
-
 footer {
     border-top:      1px solid var(--border);
     padding:         2rem 5vw;
@@ -939,7 +927,6 @@ footer p {
     color:     var(--muted);
 }
 
-/* ─── Responsive ────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
     .hero-inner {
