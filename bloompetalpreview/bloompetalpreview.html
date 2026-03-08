@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bloom & Petal — Fine Floristry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav id="nav">
+  <a class="nav-logo" href="#">Bloom & Petal</a>
+  <ul class="nav-links">
+    <li><a href="#bouquets">Bouquets</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="petals-container" id="petals"></div>
+
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Fine Floristry · Est. 2018</span>
+    <h1 class="hero-title">Bloom<br>&amp; <em>Petal</em></h1>
+    <p class="hero-tagline">Flowers that speak without words.</p>
+    <div class="hero-btns">
+      <a href="#bouquets" class="btn btn-primary">View Bouquets</a>
+      <a href="#contact"  class="btn btn-outline">Order Flowers</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<section id="bouquets">
+  <div class="bouquets-header reveal">
+    <span class="section-label">Our Collection</span>
+    <h2 class="section-title">Handcrafted <em>Bouquets</em></h2>
+    <p class="section-sub">Each arrangement is composed with care — seasonal blooms, artisan foliage, and a touch of poetry.</p>
+  </div>
+
+  <div class="products-grid">
+
+    <div class="card reveal delay-1">
+      <img class="card-img" src="f1.png" alt="Rose Reverie" loading="lazy" />
+      <div class="card-body">
+        <h3 class="card-name">Rose Reverie</h3>
+        <p class="card-desc">Garden roses, baby's breath, and eucalyptus — a timeless classic with a dreamy softness.</p>
+        <div class="card-footer">
+          <span class="card-price">$68</span>
+          <button class="btn-card" onclick="openOrder('Rose Reverie')">Order</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal delay-2">
+      <img class="card-img" src="f2.png" alt="Sage & Wildflower" loading="lazy" />
+      <div class="card-body">
+        <h3 class="card-name">Sage & Wildflower</h3>
+        <p class="card-desc">Sun-dried wildflowers woven with sage stems — organic, earthy, effortlessly romantic.</p>
+        <div class="card-footer">
+          <span class="card-price">$54</span>
+          <button class="btn-card" onclick="openOrder('Sage & Wildflower')">Order</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal delay-3">
+      <img class="card-img" src="f3.png" alt="Pastel Dreams" loading="lazy" />
+      <div class="card-body">
+        <h3 class="card-name">Pastel Dreams</h3>
+        <p class="card-desc">Soft peonies, ranunculus, and pale lisianthus in the most delicate blush tones.</p>
+        <div class="card-footer">
+          <span class="card-price">$82</span>
+          <button class="btn-card" onclick="openOrder('Pastel Dreams')">Order</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal delay-2">
+      <img class="card-img" src="f4.png" alt="Golden Hour" loading="lazy" />
+      <div class="card-body">
+        <h3 class="card-name">Golden Hour</h3>
+        <p class="card-desc">Warm sunflowers, mimosa, and amber dahlias — as radiant as the last light of evening.</p>
+        <div class="card-footer">
+          <span class="card-price">$59</span>
+          <button class="btn-card" onclick="openOrder('Golden Hour')">Order</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal delay-3">
+      <img class="card-img" src="f5.png" alt="Midnight Garden" loading="lazy" />
+      <div class="card-body">
+        <h3 class="card-name">Midnight Garden</h3>
+        <p class="card-desc">Deep burgundy roses, black calla lilies, and dried botanicals — bold and unforgettable.</p>
+        <div class="card-footer">
+          <span class="card-price">$95</span>
+          <button class="btn-card" onclick="openOrder('Midnight Garden')">Order</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal delay-4">
+      <img class="card-img" src="f6.png" alt="First Bloom" loading="lazy" />
+      <div class="card-body">
+        <h3 class="card-name">First Bloom</h3>
+        <p class="card-desc">Delicate anemones, sweet peas, and white tulips — like the very first morning of spring.</p>
+        <div class="card-footer">
+          <span class="card-price">$47</span>
+          <button class="btn-card" onclick="openOrder('First Bloom')">Order</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap reveal">
+      <img class="about-img" src="rf.webp" alt="Florist at work" loading="lazy" />
+      <div class="about-accent"></div>
+    </div>
+    <div class="about-text reveal delay-2">
+      <span class="section-label">Our Story</span>
+      <h2 class="section-title">A passion for <em>living beauty</em></h2>
+      <p class="section-sub">Every bouquet we create is a small act of love. I started Bloom & Petal from a tiny studio with a pair of scissors, a bucket of fresh roses, and an unstoppable belief that flowers can change the feeling of a room — and a heart.</p>
+      <blockquote class="about-quote">"I don't just arrange flowers. I arrange feelings."</blockquote>
+      <p class="section-sub">Today, each stem is hand-selected at dawn from local growers, and each design is composed with the same devotion as the very first bouquet I ever made.</p>
+      <p class="about-sig">— Isabelle Laurent, Founder</p>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="why-inner">
+    <div class="why-header reveal">
+      <span class="section-label">Why Bloom & Petal</span>
+      <h2 class="section-title">Our <em>Promise</em></h2>
+      <p class="section-sub">Three things we'll never compromise on — because you deserve nothing less.</p>
+    </div>
+    <div class="why-grid">
+
+      <div class="why-card reveal delay-1">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Fresh Flowers Daily</h3>
+        <p>We source only the freshest blooms — delivered to our studio each morning from select local growers and trusted farms.</p>
+      </div>
+
+      <div class="why-card reveal delay-2">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Handmade Bouquets</h3>
+        <p>No machines, no shortcuts. Every ribbon tied, every stem trimmed, every arrangement is touched by human hands — and heart.</p>
+      </div>
+
+      <div class="why-card reveal delay-3">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Same-Day Delivery</h3>
+        <p>Order before noon and we'll hand-deliver your arrangement the same day — anywhere in the city, with care and discretion.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="gallery-header reveal">
+    <span class="section-label">From Our Studio</span>
+    <h2 class="section-title">The <em>Gallery</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item reveal delay-1">
+      <img class="g-img" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=900&auto=format&fit=crop&q=80" alt="Gallery flower 1" loading="lazy" />
+      <div class="g-overlay"></div>
+    </div>
+    <div class="g-item reveal delay-2">
+      <img class="g-img" src="g1.webp" alt="Gallery flower 2" loading="lazy" />
+      <div class="g-overlay"></div>
+    </div>
+    <div class="g-item reveal delay-3">
+      <img class="g-img" src="g2.webp" alt="Gallery flower 3" loading="lazy" />
+      <div class="g-overlay"></div>
+    </div>
+    <div class="g-item reveal delay-2">
+      <img class="g-img" src="g3.webp" alt="Gallery flower 4" loading="lazy" />
+      <div class="g-overlay"></div>
+    </div>
+    <div class="g-item reveal delay-4">
+      <img class="g-img" src="g4.avif" alt="Gallery flower 5" loading="lazy" />
+      <div class="g-overlay"></div>
+    </div>
+    <div class="g-item reveal delay-1">
+      <img class="g-img" src="g5.webp" alt="Gallery flower 1" loading="lazy" />
+      <div class="g-overlay"></div>
+    </div>
+    <div class="g-item reveal delay-1">
+      <img class="g-img" src="g6.webp" alt="Gallery flower 1" loading="lazy" />
+      <div class="g-overlay"></div>
+    </div>
+    <div class="g-item reveal delay-1">
+      <img class="g-img" src="g7.avif" alt="Gallery flower 1" loading="lazy" />
+      <div class="g-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+
+    <div class="contact-info reveal">
+      <span class="section-label">Get in Touch</span>
+      <h2 class="section-title">Let's create something <em>beautiful</em></h2>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l1.93-1.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Phone</div>
+          <div class="contact-detail-value">+1 (305) 842 7711</div>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Instagram</div>
+          <div class="contact-detail-value">@bloomandpetal</div>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Studio</div>
+          <div class="contact-detail-value">14 Blossom Lane, Miami, FL</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal delay-2">
+      <div id="contactForm">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="e.g. Sophie Laurent" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+1 (000) 000 0000" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us about your order — occasion, favorite flowers, delivery date…"></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitForm()">Send Message</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">🌸</div>
+        <h3>Thank you!</h3>
+        <p>We'll get back to you within a few hours to confirm your order.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Bloom & Petal</span> · Fine Floristry · All rights reserved.</p>
+</footer>
+
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll', () => {
+  if (window.scrollY < window.innerHeight) {
+    heroBg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+  }
+}, { passive: true });
+
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => observer.observe(el));
+
+const container = document.getElementById('petals');
+const petalColors = [
+  'rgba(242,217,217,0.75)',
+  'rgba(232,191,191,0.65)',
+  'rgba(184,201,176,0.55)',
+  'rgba(253,248,244,0.6)',
+  'rgba(245,237,227,0.65)',
+];
+
+function createPetal() {
+  const p = document.createElement('div');
+  p.classList.add('petal');
+  const size = 10 + Math.random() * 14;
+  p.style.cssText = `
+    left: ${Math.random() * 105}%;
+    width: ${size}px;
+    height: ${size * 1.3}px;
+    background: ${petalColors[Math.floor(Math.random() * petalColors.length)]};
+    animation-duration: ${9 + Math.random() * 14}s;
+    animation-delay: ${Math.random() * 12}s;
+    border-radius: ${40 + Math.random() * 20}% ${10 + Math.random() * 20}% ${40 + Math.random() * 20}% ${10 + Math.random() * 20}%;
+    transform-origin: center;
+  `;
+  container.appendChild(p);
+}
+
+for (let i = 0; i < 28; i++) createPetal();
+
+function openOrder(name) {
+  const el = document.getElementById('message');
+  el.value = `Hi! I'd love to order the "${name}" bouquet. `;
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => el.focus(), 700);
+}
+
+function submitForm() {
+  const name    = document.getElementById('name').value.trim();
+  const phone   = document.getElementById('phone').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !phone || !message) {
+    const firstEmpty = [
+      document.getElementById('name'),
+      document.getElementById('phone'),
+      document.getElementById('message')
+    ].find(el => !el.value.trim());
+    if (firstEmpty) {
+      firstEmpty.style.borderColor = '#e8bfbf';
+      firstEmpty.focus();
+      setTimeout(() => { firstEmpty.style.borderColor = ''; }, 2000);
+    }
+    return;
+  }
+
+  document.getElementById('contactForm').style.display = 'none';
+  const success = document.getElementById('formSuccess');
+  success.style.display = 'block';
+  success.style.opacity = 0;
+  requestAnimationFrame(() => {
+    success.style.transition = 'opacity 0.7s ease';
+    success.style.opacity = 1;
+  });
+}
+</script>
+</body>
+</html>

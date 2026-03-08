@@ -637,6 +637,7 @@ h2 {
 .work-thumb.clean  { background-image: url('clean-icon.png');  background-size: cover; background-repeat: no-repeat; }
 .work-thumb.luna   { background-image: url('luna-icon.png');   background-size: cover; background-repeat: no-repeat; }
 .work-thumb.kuroha { background-image: url('kuroha-icon.png'); background-size: cover; background-repeat: no-repeat; }
+.work-thumb.bloompetal { background-image: url('bloom-icon.png'); background-size: cover; background-repeat: no-repeat; }
 
 .work-info {
     padding: 1.25rem;
