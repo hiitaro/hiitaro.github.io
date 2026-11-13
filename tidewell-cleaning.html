@@ -1,0 +1,1301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidewell Cleaning</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Figtree:wght@400..700&amp;display=swap">
+<style>
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+  interpolate-size: allow-keywords;
+}
+body {
+  margin: 0;
+  background: #06383F;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- tokens: everything derives from one accent ---------- */
+.tw {
+  --deep: color-mix(in oklab, var(--accent) 58%, #000);
+  --deeper: color-mix(in oklab, var(--accent) 44%, #000);
+  --tint: color-mix(in oklab, var(--accent) 9%, #fff);
+  --tint2: color-mix(in oklab, var(--accent) 17%, #fff);
+  --ink: #0F2A2D;
+  --muted: #4A6366;
+  --lemon: #FFD84D;
+  --line: rgba(15, 42, 45, 0.11);
+  font-family: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: #fff;
+  overflow-x: clip;
+}
+.tw h1,
+.tw h2,
+.tw h3 {
+  font-family: 'Bricolage Grotesque', 'Figtree', system-ui, sans-serif;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.tw h1 { font-size: clamp(2.7rem, 1.5rem + 4.4vw, 4.6rem); }
+.tw h2 { font-size: clamp(2rem, 1.3rem + 2.4vw, 3.1rem); }
+.tw h3 { font-size: 1.35rem; letter-spacing: -0.015em; line-height: 1.15; }
+.tw p { text-wrap: pretty; }
+.wrap {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 40px);
+}
+.sec {
+  padding-block: clamp(64px, 9vw, 120px);
+  scroll-margin-top: 68px;
+}
+.band-white { background: #fff; }
+.band-tint { background: var(--tint); }
+.sec-head { max-width: 640px; margin-bottom: 48px; }
+.lead2 {
+  margin: 18px 0 0;
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 36em;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 999px;
+  font: 600 1rem/1 'Figtree', system-ui, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s, background 0.2s, color 0.2s;
+}
+.btn-sm { min-height: 44px; padding: 0 20px; font-size: 0.95rem; }
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 12px 26px -12px var(--accent);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 30px -12px var(--accent);
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.34) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: sheen 5.5s 1.6s ease-in-out infinite;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+}
+.btn-ghost:hover {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.btn-lemon {
+  background: var(--lemon);
+  color: var(--ink);
+  box-shadow: 0 14px 28px -14px rgba(0, 0, 0, 0.5);
+}
+.btn-lemon:hover { transform: translateY(-2px); }
+.btn svg { transition: transform 0.25s; }
+.btn:hover svg { transform: translateX(3px); }
+.tw a:focus-visible,
+.tw button:focus-visible,
+.tw input:focus-visible,
+.tw summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+.cta a:focus-visible,
+.cta button:focus-visible,
+.result a:focus-visible,
+.foot a:focus-visible {
+  outline-color: var(--lemon);
+}
+
+/* ---------- nav ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, #fff 80%, transparent);
+  -webkit-backdrop-filter: saturate(1.5) blur(14px);
+  backdrop-filter: saturate(1.5) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 68px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.f-acc { fill: var(--accent); }
+.f-lemon { fill: var(--lemon); }
+.nav-links { display: flex; gap: 34px; }
+.nav-links a {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.97rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+@media (max-width: 760px) {
+  .nav-links { display: none; }
+}
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--tint);
+  padding-block: clamp(40px, 6vw, 88px) clamp(56px, 8vw, 112px);
+}
+.hero-in {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 48px 56px;
+}
+.hero-copy { flex: 1 1 440px; min-width: 0; }
+.hero-visual {
+  flex: 1 1 400px;
+  min-width: 0;
+  position: relative;
+  isolation: isolate;
+  min-height: 520px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: ping 2.4s ease-out infinite;
+}
+.hero h1 { margin: 24px 0 22px; }
+.lead {
+  margin: 0 0 34px;
+  max-width: 33em;
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+.swash { position: relative; white-space: nowrap; z-index: 0; }
+.swash::after {
+  content: "";
+  position: absolute;
+  left: -0.06em;
+  right: -0.06em;
+  bottom: 0.05em;
+  height: 0.34em;
+  border-radius: 0.2em;
+  background: var(--lemon);
+  z-index: -1;
+  transform-origin: left;
+  animation: swash 0.9s 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.trust {
+  list-style: none;
+  margin: 38px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.trust li { display: flex; align-items: center; gap: 8px; }
+.trust-ico {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--accent);
+}
+
+.blob { position: absolute; border-radius: 50%; filter: blur(64px); pointer-events: none; }
+.blob-a {
+  width: 560px;
+  height: 560px;
+  right: -140px;
+  top: -80px;
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
+  animation: blob 16s ease-in-out infinite alternate;
+}
+.blob-b {
+  width: 300px;
+  height: 300px;
+  left: -90px;
+  bottom: -120px;
+  background: color-mix(in srgb, var(--lemon) 50%, transparent);
+  animation: blob 20s ease-in-out infinite alternate-reverse;
+}
+
+.bubble {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.95) 0 11%, rgba(255, 255, 255, 0.25) 30%, color-mix(in srgb, var(--accent) 20%, transparent) 75%, color-mix(in srgb, var(--accent) 30%, transparent) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+  animation: drift var(--t, 9s) ease-in-out var(--dl, 0s) infinite alternate;
+}
+.b1 { width: 92px; height: 92px; left: 0; top: 6%; --t: 10s; --dx: 14px; --dy: -24px; }
+.b2 { width: 46px; height: 46px; left: 13%; bottom: 10%; --t: 8s; --dl: -3s; --dx: -10px; --dy: -30px; }
+.b3 { width: 72px; height: 72px; right: 4%; bottom: 3%; --t: 11s; --dl: -5s; --dx: -16px; --dy: -22px; }
+.b4 { width: 28px; height: 28px; right: 20%; top: 5%; --t: 7s; --dl: -2s; --dx: 10px; --dy: 22px; }
+.b5 { width: 54px; height: 54px; left: 2%; top: 55%; --t: 9s; --dl: -6s; --dx: 12px; --dy: -26px; }
+.b6 { width: 20px; height: 20px; left: 42%; bottom: 1%; --t: 6s; --dl: -1s; --dx: -8px; --dy: -20px; }
+.spark {
+  position: absolute;
+  z-index: 3;
+  fill: var(--lemon);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: twinkle 3.2s ease-in-out var(--dl, 0s) infinite;
+}
+.s1 { width: 34px; height: 34px; left: 8%; top: 22%; }
+.s2 { width: 22px; height: 22px; right: 9%; bottom: 17%; --dl: 1s; }
+.s3 { width: 18px; height: 18px; right: 1%; top: 10%; --dl: 2s; }
+
+.cv-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+}
+.cv {
+  width: min(100%, 390px);
+  padding: 24px;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 40px 70px -34px rgba(7, 56, 63, 0.55), 0 0 0 1px var(--line);
+  animation: bob 7s ease-in-out infinite;
+}
+.cv-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.cv-head strong {
+  display: block;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+}
+.cv-head small { color: var(--muted); font-size: 0.88rem; }
+.live {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--tint2);
+  color: var(--deep);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.live i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: blink 1.6s ease-in-out infinite;
+}
+.cv-list { list-style: none; margin: 0; padding: 0; }
+.cv-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+}
+.cv-list li:first-child { border-top: 0; }
+.cv-list b { display: block; font-weight: 600; line-height: 1.25; }
+.cv-list small { color: var(--muted); font-size: 0.86rem; line-height: 1.3; display: block; }
+.tick {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--tint2);
+}
+.tick path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: untick 10s var(--d, 0s) ease-in-out infinite;
+}
+.cv-foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: var(--tint);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.cv-foot svg { color: var(--accent); flex: none; }
+.fchip {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 10px 12px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 16px 30px -14px rgba(7, 56, 63, 0.5), 0 0 0 1px var(--line);
+  font-size: 0.92rem;
+  font-weight: 600;
+  animation: bob2 6s ease-in-out infinite;
+}
+.fchip span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--tint2);
+  color: var(--accent);
+}
+.fc1 { top: 34px; right: -6px; }
+.fc2 { bottom: 52px; left: -6px; animation-delay: -3s; }
+
+/* ---------- services ---------- */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+@media (max-width: 1040px) {
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .grid-4 { grid-template-columns: minmax(0, 1fr); }
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s, border-color 0.35s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  box-shadow: 0 26px 40px -26px rgba(7, 56, 63, 0.4);
+}
+.ico {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 8px;
+  border-radius: 16px;
+  background: var(--tint2);
+  color: var(--accent);
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+.card:hover .ico {
+  background: var(--accent);
+  color: #fff;
+  transform: rotate(-6deg);
+}
+.card p { margin: 0; color: var(--muted); font-size: 1rem; }
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 16px;
+  font-weight: 600;
+}
+.card-foot svg { color: var(--accent); transition: transform 0.3s; }
+.card:hover .card-foot svg { transform: translateX(5px); }
+
+/* ---------- how it works ---------- */
+.steps {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.step { position: relative; }
+.num {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font: 700 1.35rem/1 'Bricolage Grotesque', system-ui, sans-serif;
+  box-shadow: 0 0 0 8px var(--tint);
+}
+.step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 27px;
+  left: 70px;
+  right: -22px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--accent) 0 8px, transparent 8px 16px);
+  opacity: 0.35;
+}
+.step p { margin: 12px 0 0; color: var(--muted); max-width: 30ch; }
+@media (max-width: 760px) {
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .step:not(:last-child)::before { display: none; }
+}
+
+/* ---------- estimator ---------- */
+.est {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 40px 56px;
+}
+.est-left { flex: 1.3 1 460px; min-width: 0; }
+.est-right { flex: 1 1 340px; min-width: 0; }
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 36px;
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: 28px;
+  background: var(--tint);
+}
+.label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font: 500 0.98rem/1 'Figtree', system-ui, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.chip:hover { border-color: var(--accent); }
+.chip:active { transform: scale(0.97); }
+.chip-on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.chip-on:hover { border-color: var(--accent); }
+.row { display: flex; flex-wrap: wrap; gap: 24px 40px; }
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+}
+.step-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--tint2);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.step-btn:hover:not(:disabled) { background: var(--accent); color: #fff; }
+.step-btn:active:not(:disabled) { transform: scale(0.92); }
+.step-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.step-val { min-width: 84px; text-align: center; font-weight: 600; }
+
+.result {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: 28px;
+  background: var(--deep);
+  color: #fff;
+}
+.result::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -120px;
+  top: -140px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 70%, transparent);
+  filter: blur(50px);
+  opacity: 0.7;
+}
+.result > * { position: relative; }
+.r-label { font-size: 0.92rem; font-weight: 600; color: rgba(255, 255, 255, 0.75); }
+.r-price {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 2rem + 2.4vw, 3.8rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--lemon);
+  font-variant-numeric: tabular-nums;
+}
+.r-sub { margin: -8px 0 0; color: rgba(255, 255, 255, 0.82); }
+.r-incl {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 0.98rem;
+}
+.r-incl li { display: flex; align-items: center; gap: 10px; }
+.r-incl svg { flex: none; color: var(--lemon); }
+.r-note { margin: 0; font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); }
+.result .btn { margin-top: auto; }
+.pop-a { animation: pop-a 0.38s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.pop-b { animation: pop-b 0.38s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+/* ---------- faq ---------- */
+.faq {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px 72px;
+}
+.faq-head { flex: 1 1 280px; min-width: 0; }
+.faq-list {
+  flex: 2 1 460px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-list details {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.faq-list details[open] {
+  border-color: color-mix(in srgb, var(--accent) 32%, transparent);
+  box-shadow: 0 20px 30px -26px rgba(7, 56, 63, 0.45);
+}
+.faq-list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  font-weight: 600;
+  font-size: 1.08rem;
+  cursor: pointer;
+  list-style: none;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary svg { flex: none; color: var(--accent); transition: transform 0.3s; }
+.faq-list details[open] summary svg { transform: rotate(180deg); }
+.faq-list details p { margin: 0; padding: 0 24px 22px; color: var(--muted); max-width: 54ch; }
+@supports (interpolate-size: allow-keywords) {
+  .faq-list details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size 0.35s ease, content-visibility 0.35s allow-discrete;
+  }
+  .faq-list details[open]::details-content { block-size: auto; }
+}
+
+/* ---------- booking ---------- */
+.cta {
+  position: relative;
+  overflow: hidden;
+  background: var(--deep);
+  color: #fff;
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  right: -160px;
+  top: -220px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 65%, transparent);
+  filter: blur(80px);
+  opacity: 0.6;
+}
+.cta h2 { color: #fff; }
+.cta .lead2 { color: rgba(255, 255, 255, 0.8); }
+.book {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 48px 64px;
+}
+.book-copy { flex: 1 1 360px; min-width: 0; }
+.phone {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.phone span { color: rgba(255, 255, 255, 0.75); font-size: 0.95rem; }
+.phone strong {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.3rem);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  user-select: all;
+}
+.phone small { color: rgba(255, 255, 255, 0.75); font-size: 0.92rem; }
+.form-card {
+  flex: 1 1 400px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: clamp(22px, 3vw, 36px);
+  border-radius: 28px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 44px 80px -40px rgba(0, 0, 0, 0.65);
+}
+.sum {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 22px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: var(--tint);
+  font-size: 0.95rem;
+}
+.sum strong {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 1.15rem;
+  color: var(--deep);
+  font-variant-numeric: tabular-nums;
+}
+.fields { display: flex; flex-direction: column; gap: 18px; }
+.fields label { display: block; margin-bottom: 8px; font-size: 0.92rem; font-weight: 600; }
+.fields input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font: 400 1rem/1 'Figtree', system-ui, sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.fields input::placeholder { color: #7C9194; }
+.fields input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--tint2); outline: none; }
+.err { margin: 0; color: #B42318; font-size: 0.92rem; font-weight: 500; }
+.form-card .btn { width: 100%; margin-top: 22px; }
+.fine { margin: 14px 0 0; text-align: center; font-size: 0.86rem; color: var(--muted); }
+.done { text-align: center; padding: 20px 0; }
+.done-ico {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: var(--tint2);
+}
+.done-ico path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: draw 0.7s 0.15s ease-out both;
+}
+.done p { margin: 12px auto 24px; max-width: 30ch; color: var(--muted); }
+.done .btn { width: auto; margin-top: 0; }
+
+/* ---------- footer ---------- */
+.foot { background: var(--deeper); color: rgba(255, 255, 255, 0.78); padding-block: 40px; }
+.foot-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
+.foot .brand { color: #fff; }
+.foot .f-acc { fill: color-mix(in srgb, var(--accent) 40%, #fff); }
+.foot nav { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.foot nav a { color: rgba(255, 255, 255, 0.78); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+.foot nav a:hover { color: #fff; }
+.foot p { margin: 0; flex-basis: 100%; font-size: 0.88rem; color: rgba(255, 255, 255, 0.65); }
+
+/* ---------- keyframes ---------- */
+@keyframes sheen {
+  0%, 70% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.6; }
+  80%, 100% { transform: scale(3); opacity: 0; }
+}
+@keyframes swash {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes blob {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-40px, 30px, 0) scale(1.12); }
+}
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(var(--dx, 12px), var(--dy, -26px), 0); }
+}
+@keyframes twinkle {
+  0%, 100% { transform: scale(0.7) rotate(0deg); opacity: 0.75; }
+  50% { transform: scale(1.1) rotate(45deg); opacity: 1; }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(-1deg); }
+}
+@keyframes bob2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes untick {
+  0%, 66% { stroke-dashoffset: 0; }
+  70%, 74% { stroke-dashoffset: 1; }
+  86%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes pop-a {
+  from { transform: translateY(8px) scale(0.97); opacity: 0.35; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes pop-b {
+  from { transform: translateY(8px) scale(0.97); opacity: 0.35; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes rv {
+  from { opacity: 0.25; translate: 0 34px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes prog {
+  to { transform: scaleX(1); }
+}
+
+/* scroll-driven animation where supported; everything stays visible elsewhere */
+@supports (animation-timeline: view()) {
+  .rv {
+    animation: rv linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 32%;
+  }
+  .rv[style*="--i"] {
+    animation-range: entry calc(var(--i) * 7%) entry calc(32% + var(--i) * 7%);
+  }
+}
+@supports (animation-timeline: scroll()) {
+  .progress {
+    animation: prog linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tw *,
+  .tw *::before,
+  .tw *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+<body>
+<div class="tw" style="--accent: #0B6E78">
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Tidewell Cleaning, back to top">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+        <path class="f-acc" d="M16 3C16 3 6.5 13.4 6.5 20.2a9.5 9.5 0 0 0 19 0C25.5 13.4 16 3 16 3Z"></path>
+        <path d="M11.2 20.6a5 5 0 0 0 4 4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" opacity="0.75"></path>
+        <path class="f-lemon" d="M25.5 1.5l1.2 3.3 3.3 1.2-3.3 1.2-1.2 3.3-1.2-3.3L21 6l3.3-1.2z"></path>
+      </svg>
+      <span>Tidewell</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#estimate">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#book">Book a clean</a>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<main>
+
+<section id="top" class="hero">
+  <div class="blob blob-a" aria-hidden="true"></div>
+  <div class="blob blob-b" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <span class="pill"><span class="dot"></span>Book online in about 2 minutes</span>
+      <h1>Come home to a <span class="swash">spotless</span> house.</h1>
+      <p class="lead">Tidewell sends vetted, insured cleaners with eco-friendly supplies. Pick a service, see your price, and choose a time that fits your week.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#estimate">
+          Get an instant estimate
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-ghost" href="#services">See services</a>
+      </div>
+      <ul class="trust">
+        <li><span class="trust-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Licensed, bonded &amp; insured</li>
+        <li><span class="trust-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Supplies included</li>
+        <li><span class="trust-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>24-hour re-clean promise</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="bubble b1"></div>
+      <div class="bubble b2"></div>
+      <div class="bubble b3"></div>
+      <div class="bubble b4"></div>
+      <div class="bubble b5"></div>
+      <div class="bubble b6"></div>
+      <svg class="spark s1" viewBox="0 0 24 24"><path d="M12 0C12 7 17 12 24 12C17 12 12 17 12 24C12 17 7 12 0 12C7 12 12 7 12 0Z"></path></svg>
+      <svg class="spark s2" viewBox="0 0 24 24"><path d="M12 0C12 7 17 12 24 12C17 12 12 17 12 24C12 17 7 12 0 12C7 12 12 7 12 0Z"></path></svg>
+      <svg class="spark s3" viewBox="0 0 24 24"><path d="M12 0C12 7 17 12 24 12C17 12 12 17 12 24C12 17 7 12 0 12C7 12 12 7 12 0Z"></path></svg>
+
+      <div class="cv-wrap">
+        <div class="cv">
+          <div class="cv-head">
+            <div>
+              <strong>Today's visit</strong>
+              <small>2 bed · 1 bath · Standard clean</small>
+            </div>
+            <span class="live"><i></i>On the way</span>
+          </div>
+          <ul class="cv-list">
+            <li style="--d: 0s">
+              <span class="tick"><svg width="16" height="16" viewBox="0 0 24 24"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+              <div><b>Kitchen</b><small>Counters, appliances, floors</small></div>
+            </li>
+            <li style="--d: 0.5s">
+              <span class="tick"><svg width="16" height="16" viewBox="0 0 24 24"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+              <div><b>Bathroom</b><small>Scrubbed and sanitized</small></div>
+            </li>
+            <li style="--d: 1s">
+              <span class="tick"><svg width="16" height="16" viewBox="0 0 24 24"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+              <div><b>Living areas</b><small>Dusted and vacuumed</small></div>
+            </li>
+            <li style="--d: 1.5s">
+              <span class="tick"><svg width="16" height="16" viewBox="0 0 24 24"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+              <div><b>Bedrooms</b><small>Beds made, surfaces wiped</small></div>
+            </li>
+          </ul>
+          <div class="cv-foot">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            Your cleaner arrives at 9:30 AM
+          </div>
+        </div>
+      </div>
+
+      <div class="fchip fc1">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"></path><path d="M5 19c3-5 6-7.500 10-9.500"></path></svg></span>
+        Eco-friendly supplies
+      </div>
+      <div class="fchip fc2">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.500 3v5.500c0 4.500-3 8-7.500 9.500-4.500-1.500-7.500-5-7.500-9.500V6z"></path><path d="M8.800 12.200l2.200 2.200 4.200-4.400"></path></svg></span>
+        Insured team
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="sec band-white">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Cleaning that fits how you live</h2>
+      <p class="lead2">Four services, one simple price. Every visit comes with supplies, equipment and a checklist.</p>
+    </div>
+    <div class="grid-4">
+      <a class="card rv" href="#estimate" style="--i: 0" data-svc="standard">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.500L12 4l9 7.500"></path><path d="M5.500 10v9.500h13V10"></path><path d="M10 19.500v-5h4v5"></path></svg></span>
+        <h3>Standard clean</h3>
+        <p>Regular upkeep for kitchens, bathrooms, floors and every surface in between.</p>
+        <div class="card-foot"><span>From $100</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+      </a>
+      <a class="card rv" href="#estimate" style="--i: 1" data-svc="deep">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.800 5.200L19 10l-5.200 1.800L12 17l-1.800-5.200L5 10l5.200-1.800z"></path><path d="M19 15.500l.7 1.800 1.800.7-1.800.7-.7 1.800-.7-1.800-1.800-.7 1.800-.7z"></path></svg></span>
+        <h3>Deep clean</h3>
+        <p>Baseboards, grout and inside appliances. A full reset for a busy home.</p>
+        <div class="card-foot"><span>From $170</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+      </a>
+      <a class="card rv" href="#estimate" style="--i: 2" data-svc="move">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.500 7.500L12 3l8.500 4.500v9L12 21l-8.500-4.500z"></path><path d="M3.500 7.500L12 12l8.500-4.500M12 12v9"></path></svg></span>
+        <h3>Move-in / move-out</h3>
+        <p>An empty-home clean that helps you hand over the keys, or start fresh.</p>
+        <div class="card-foot"><span>From $190</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+      </a>
+      <a class="card rv" href="#estimate" style="--i: 3" data-svc="rental">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"></circle><path d="M10.800 12.200L20 3"></path><path d="M16.500 6.500L19 9M14 9l2 2"></path></svg></span>
+        <h3>Rental turnover</h3>
+        <p>Quick turnarounds between guests, with linens swapped and basics restocked.</p>
+        <div class="card-foot"><span>From $125</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="sec band-tint">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Three steps to a fresh start</h2>
+      <p class="lead2">No phone tag and no waiting for a callback. You stay in control from the first click.</p>
+    </div>
+    <ol class="steps">
+      <li class="step rv" style="--i: 0">
+        <span class="num">1</span>
+        <h3>Tell us about your space</h3>
+        <p>Pick a service, add your bedrooms and bathrooms, and choose any extras. Your price appears right away.</p>
+      </li>
+      <li class="step rv" style="--i: 1">
+        <span class="num">2</span>
+        <h3>Choose a time</h3>
+        <p>Select a day that suits you. We confirm by email and let you know who is coming.</p>
+      </li>
+      <li class="step rv" style="--i: 2">
+        <span class="num">3</span>
+        <h3>Enjoy the fresh start</h3>
+        <p>Your cleaner arrives with supplies and a checklist. If we miss a spot, we return within 24 hours.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="estimate" class="sec band-white">
+  <div class="wrap est">
+    <div class="est-left rv">
+      <h2>See your price in seconds</h2>
+      <p class="lead2">Choose a service, tell us about your home and add any extras. The estimate updates as you go.</p>
+      <div class="panel">
+        <div>
+          <span class="label" id="lbl-service">Service</span>
+          <div class="chips" id="svc-chips" role="group" aria-labelledby="lbl-service">
+            
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <span class="label" id="lbl-beds">Bedrooms</span>
+            <div class="stepper" role="group" aria-labelledby="lbl-beds">
+              <button type="button" class="step-btn" aria-label="Fewer bedrooms" id="dec-beds"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"></path></svg></button>
+              <span class="step-val" id="beds-val" aria-live="polite">2 beds</span>
+              <button type="button" class="step-btn" aria-label="More bedrooms" id="inc-beds"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12M12 6v12"></path></svg></button>
+            </div>
+          </div>
+          <div>
+            <span class="label" id="lbl-baths">Bathrooms</span>
+            <div class="stepper" role="group" aria-labelledby="lbl-baths">
+              <button type="button" class="step-btn" aria-label="Fewer bathrooms" id="dec-baths"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"></path></svg></button>
+              <span class="step-val" id="baths-val" aria-live="polite">1 bath</span>
+              <button type="button" class="step-btn" aria-label="More bathrooms" id="inc-baths"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12M12 6v12"></path></svg></button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="label" id="lbl-extras">Extras</span>
+          <div class="chips" id="extra-chips" role="group" aria-labelledby="lbl-extras">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="est-right rv" style="--i: 2" aria-label="Your estimate">
+      <div class="result">
+        <span class="r-label">Your estimate</span>
+        <div class="r-price" id="price" aria-live="polite">$150 – $175</div>
+        <p class="r-sub" id="summary">Standard clean · 2 bed · 1 bath</p>
+        <ul class="r-incl">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"></path></svg>Supplies and equipment included</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"></path></svg>Vetted, insured cleaners</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"></path></svg>Free rescheduling up to 24 hours ahead</li>
+        </ul>
+        <a class="btn btn-lemon" href="#book">
+          Book this clean
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <p class="r-note">Estimate only. We confirm your final price before the first visit.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="faq" class="sec band-tint">
+  <div class="wrap faq">
+    <div class="faq-head rv">
+      <h2>Questions, answered</h2>
+      <p class="lead2">Still unsure about something? Send a request below and we will reply within one business day.</p>
+    </div>
+    <div class="faq-list rv" style="--i: 1">
+      <details open="">
+        <summary>Do I need to be home during the clean?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary>
+        <p>No. Many clients leave a key, a door code or a lockbox. We confirm access with you before the visit.</p>
+      </details>
+      <details>
+        <summary>Do you bring your own supplies?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary>
+        <p>Yes. Your cleaner brings supplies and equipment. If you prefer your own products, leave a note and we will use them.</p>
+      </details>
+      <details>
+        <summary>Are your products safe for pets and kids?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary>
+        <p>We use plant-based, low-odor cleaners by default. Tell us about allergies or sensitivities and we will adjust.</p>
+      </details>
+      <details>
+        <summary>What if something is not right?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary>
+        <p>Tell us within 24 hours and we will send a cleaner back to fix it at no cost.</p>
+      </details>
+      <details>
+        <summary>How does pricing work?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary>
+        <p>Your price depends on the service, the size of your home and any extras. We confirm the final amount before your first visit, with no surprise fees.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="sec cta">
+  <div class="wrap book">
+    <div class="book-copy rv">
+      <h2>Ready for a fresher home?</h2>
+      <p class="lead2">Share a few details and we will confirm your clean within one business day.</p>
+      <div class="phone">
+        <span>Prefer to talk?</span>
+        <strong>1 (800) 555-0132</strong>
+        <small>Monday to Saturday, 8 AM to 6 PM</small>
+      </div>
+    </div>
+
+    <div class="form-card rv" style="--i: 1">
+      <div id="form-view">
+        <div class="sum">
+          <span id="summary2">Standard clean · 2 bed · 1 bath</span>
+          <strong id="price2">$150 – $175</strong>
+        </div>
+        <div class="fields">
+          <div>
+            <label for="f-name">Full name</label>
+            <input id="f-name" type="text" autocomplete="name" placeholder="Jordan Rivera">
+          </div>
+          <div>
+            <label for="f-zip">ZIP code</label>
+            <input id="f-zip" type="text" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="90210">
+          </div>
+          <div>
+            <label for="f-email">Email</label>
+            <input id="f-email" type="email" autocomplete="email" placeholder="you@example.com">
+          </div>
+          <p class="err" id="err" role="alert" hidden></p>
+        </div>
+        <button type="button" class="btn btn-primary" id="submit">Request my clean</button>
+        <p class="fine">No payment until your clean is confirmed.</p>
+      </div>
+      <div id="done-view" hidden>
+        <div class="done">
+          <div class="done-ico"><svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M5 12.500l4.500 4.500L19 7.500"></path></svg></div>
+          <h3>Request received</h3>
+          <p>Thank you. We will email you within one business day to confirm your visit.</p>
+          <button type="button" class="btn btn-ghost" id="reset">Start another request</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a class="brand" href="#top" aria-label="Tidewell Cleaning, back to top">
+      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+        <path class="f-acc" d="M16 3C16 3 6.5 13.4 6.5 20.2a9.5 9.5 0 0 0 19 0C25.5 13.4 16 3 16 3Z"></path>
+        <path d="M11.2 20.6a5 5 0 0 0 4 4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" opacity="0.75"></path>
+        <path class="f-lemon" d="M25.5 1.5l1.2 3.3 3.3 1.2-3.3 1.2-1.2 3.3-1.2-3.3L21 6l3.3-1.2z"></path>
+      </svg>
+      <span>Tidewell</span>
+    </a>
+    <nav aria-label="Footer">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#estimate">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <p>© 2026 Tidewell Cleaning. Licensed, bonded &amp; insured.</p>
+  </div>
+</footer>
+
+</div>
+<script>
+(function(){
+var S=[['standard','Standard clean',1],['deep','Deep clean',1.7],['move','Move-in / move-out',1.9],['rental','Rental turnover',1.25]];
+var E=[['fridge','Inside fridge',35],['oven','Inside oven',35],['windows','Interior windows',45],['laundry','One load of laundry',25]];
+var st={service:'standard',beds:2,baths:1,extras:{}},tick=0;
+var $=function(i){return document.getElementById(i)};
+function r5(n){return Math.round(n/5)*5}
+function chip(label,on,fn){var b=document.createElement('button');b.type='button';b.className=on?'chip chip-on':'chip';b.setAttribute('aria-pressed',on);b.textContent=label;b.onclick=fn;return b}
+function render(){
+  var svc=S.filter(function(x){return x[0]===st.service})[0],total=(70+st.beds*25+st.baths*30)*svc[2],n=0;
+  E.forEach(function(x){if(st.extras[x[0]]){total+=x[2];n++}});
+  var range='$'+r5(total)+' – $'+r5(total*1.15);
+  var sum=svc[1]+' · '+(st.beds===0?'Studio':st.beds+' bed')+' · '+st.baths+' bath'+(n?' · '+n+(n===1?' extra':' extras'):'');
+  var sc=$('svc-chips'),ec=$('extra-chips');sc.innerHTML='';ec.innerHTML='';
+  S.forEach(function(x){sc.appendChild(chip(x[1],st.service===x[0],function(){st.service=x[0];render()}))});
+  E.forEach(function(x){ec.appendChild(chip(x[1]+' +$'+x[2],!!st.extras[x[0]],function(){st.extras[x[0]]=!st.extras[x[0]];render()}))});
+  $('beds-val').textContent=st.beds===0?'Studio':st.beds+(st.beds===1?' bed':' beds');
+  $('baths-val').textContent=st.baths+(st.baths===1?' bath':' baths');
+  $('dec-beds').disabled=st.beds<=0;$('inc-beds').disabled=st.beds>=6;
+  $('dec-baths').disabled=st.baths<=1;$('inc-baths').disabled=st.baths>=5;
+  ['price','price2'].forEach(function(i){$(i).textContent=range});
+  $('summary').textContent=sum;$('summary2').textContent=sum;
+  var p=$('price');p.className='r-price';
+  if(tick++){void p.offsetWidth;p.className='r-price '+(tick%2?'pop-a':'pop-b')}
+}
+$('dec-beds').onclick=function(){st.beds=Math.max(0,st.beds-1);render()};
+$('inc-beds').onclick=function(){st.beds=Math.min(6,st.beds+1);render()};
+$('dec-baths').onclick=function(){st.baths=Math.max(1,st.baths-1);render()};
+$('inc-baths').onclick=function(){st.baths=Math.min(5,st.baths+1);render()};
+document.querySelectorAll('[data-svc]').forEach(function(a){a.addEventListener('click',function(){st.service=a.getAttribute('data-svc');render()})});
+$('f-zip').addEventListener('input',function(e){e.target.value=e.target.value.replace(/\D/g,'').slice(0,5)});
+$('submit').onclick=function(){
+  var name=$('f-name').value.trim(),zip=$('f-zip').value,email=$('f-email').value,err='';
+  if(!name)err='Enter your name.';else if(!/^\d{5}$/.test(zip))err='Enter a 5-digit ZIP code.';else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))err='Enter a valid email address.';
+  var e=$('err');e.hidden=!err;e.textContent=err;
+  if(!err){/* TODO: send {name, zip, email, estimate} to your backend here */$('form-view').hidden=true;$('done-view').hidden=false}
+};
+$('reset').onclick=function(){['f-name','f-zip','f-email'].forEach(function(i){$(i).value=''});$('done-view').hidden=true;$('form-view').hidden=false};
+render();tick=0;
+})();
+</script>
+</body>
+</html>

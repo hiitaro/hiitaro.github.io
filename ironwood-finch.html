@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ironwood &amp; Finch — Barber Co. | Chicago</title>
+<meta name="description" content="Ironwood &amp; Finch Barber Co. — precision cuts, straight-razor shaves and beard craft in Chicago. A fictional business for portfolio purposes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* ---------- Tokens & base ---------- */
+:root{--ink:#0e0d0c;--coal:#171512;--bone:#ece4d6;--mute:#a79e8e;--brass:#c19a5b;--brass-2:#e2c088;--ox:#8a2a26;--navy:#22384f;--line:rgba(236,228,214,.14);
+--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--ease:cubic-bezier(.2,.7,.2,1);
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);background:var(--ink)}
+body{font:400 1rem/1.7 var(--sans);color:var(--bone);background:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--ink);z-index:60}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.07;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}a:focus-visible,button:focus-visible{outline:2px solid var(--brass-2);outline-offset:4px}
+.wrap{width:min(1180px,100% - 3rem);margin-inline:auto}
+section{padding:clamp(5rem,11vw,9rem) 0}
+.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.eyebrow{display:inline-flex;align-items:center;gap:.9rem;font:600 .72rem/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--brass)}
+.eyebrow::before{content:"";width:2.2rem;height:1px;background:currentColor}
+h2{font:500 clamp(2.4rem,5vw,4rem)/1.02 var(--serif);letter-spacing:-.01em;margin-top:1.1rem}
+h2 em{color:var(--brass);font-style:italic}
+.lead{color:var(--mute);max-width:46ch}
+
+/* ---------- Buttons & links ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:.8rem;padding:1.05rem 1.9rem;background:var(--brass);color:#16120d;border:1px solid var(--brass);font:600 .74rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(193,154,91,.6)}.btn:hover::after{transform:translateX(120%)}
+.btn .ic{width:16px;height:16px;stroke-width:2.2;transition:transform .4s var(--ease)}.btn:hover .ic{transform:translateX(4px)}
+.btn.gh{background:transparent;color:var(--bone);border-color:rgba(236,228,214,.35)}.btn.gh:hover{border-color:var(--brass);box-shadow:none}
+.btn.sm{padding:.85rem 1.3rem}
+.ln{position:relative;text-decoration:none;font:500 .76rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.ln::after{content:"";position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:var(--brass);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.ln:hover::after{transform:scaleX(1);transform-origin:left}
+
+/* ---------- Header & menu ---------- */
+header{position:fixed;inset:0 0 auto;z-index:50;padding:calc(env(safe-area-inset-top,0px) + 1.2rem) 0 1.2rem;border-bottom:1px solid transparent;transition:background .4s,padding .4s,border-color .4s}
+header.sc{background:rgba(14,13,12,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding-top:calc(env(safe-area-inset-top,0px) + .7rem);padding-bottom:.7rem;border-color:var(--line)}
+header.open{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border-color:transparent}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.logo{display:flex;flex-direction:column;font:600 1.55rem/1 var(--serif);letter-spacing:.02em;text-decoration:none}
+.logo small{margin-top:.4rem;font:600 .56rem/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:var(--brass)}
+.dn ul{list-style:none;display:flex;gap:2.4rem;padding:0}
+.tg{display:none;position:relative;width:44px;height:44px;background:none;border:0;color:var(--bone);cursor:pointer}
+.tg span{position:absolute;left:11px;right:11px;height:1.5px;background:currentColor;transition:transform .5s var(--ease),top .5s var(--ease)}
+.tg span:first-child{top:18px}.tg span:last-child{top:25px}
+header.open .tg span:first-child{top:21px;transform:rotate(45deg)}header.open .tg span:last-child{top:21px;transform:rotate(-45deg)}
+.ov{position:fixed;inset:0;z-index:45;display:grid;place-items:center;background:var(--ink);opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s}
+.ov.open{opacity:1;visibility:visible}
+.ov ul{list-style:none;padding:0;text-align:center;display:grid;gap:1.6rem}
+.ov .ln{font:500 2.6rem/1 var(--serif);letter-spacing:0;text-transform:none}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:8rem 0 6rem;overflow:hidden;isolation:isolate;
+background:radial-gradient(60% 55% at 78% 42%,rgba(193,154,91,.22),transparent 70%),radial-gradient(45% 50% at 8% 100%,rgba(138,42,38,.3),transparent 70%),radial-gradient(80% 70% at 50% 0%,#2b251d,transparent 75%),var(--ink)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 90% at 50% 50%,transparent 50%,rgba(0,0,0,.55))}
+.ring{position:absolute;right:-8%;top:50%;width:min(70vw,780px);aspect-ratio:1;border:1px solid rgba(193,154,91,.2);border-radius:50%;transform:translateY(-50%);z-index:-1}
+.ring::after{content:"";position:absolute;inset:11%;border:1px solid rgba(193,154,91,.12);border-radius:50%}
+.hg{display:grid;grid-template-columns:1.3fr .7fr;gap:3rem;align-items:center}
+.hero h1{font:500 clamp(3.4rem,9vw,7.6rem)/.92 var(--serif);letter-spacing:-.02em;margin:1.6rem 0 1.8rem}
+.hero h1 em{color:var(--brass);font-style:italic}
+.hero p.lead{font-size:1.1rem;margin-bottom:2.6rem}
+.cta{display:flex;gap:1rem;flex-wrap:wrap}
+.facts{display:flex;gap:2rem;flex-wrap:wrap;margin-top:3rem;font:500 .68rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.facts span::before{content:"✦";color:var(--brass);margin-right:.7rem}
+.pw{--pw:clamp(84px,8.5vw,112px);position:relative;justify-self:center;display:flex;flex-direction:column;align-items:center}
+.pw::after{content:"";position:absolute;left:50%;bottom:-34px;width:280px;height:64px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(193,154,91,.32),transparent);z-index:-1}
+.cap{position:relative;width:calc(var(--pw) + 26px);height:30px;border-radius:50% 50% 6px 6px/100% 100% 6px 6px;background:linear-gradient(90deg,#4d361a,#c19a5b 22%,#f0d9a6 42%,#c19a5b 62%,#4d361a);box-shadow:0 8px 20px rgba(0,0,0,.5)}
+.cap::before{content:"";position:absolute;left:50%;top:-13px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);background:radial-gradient(circle at 35% 30%,#f6e2b4,#c19a5b 60%,#5a4020)}
+.cap.b{transform:scaleY(-1)}.cap.b::before{display:none}
+.pole{position:relative;width:var(--pw);height:min(48vh,400px);overflow:hidden;border-radius:6px;box-shadow:0 0 0 3px #14110e,0 0 0 4px rgba(193,154,91,.5),0 0 100px rgba(193,154,91,.18)}
+.med{position:absolute;width:104px;height:104px;border-radius:50%;display:grid;place-items:center;color:var(--brass-2);border:1px solid rgba(193,154,91,.45);background:radial-gradient(circle at 35% 30%,rgba(193,154,91,.24),rgba(14,13,12,.88) 70%);box-shadow:0 20px 40px -10px rgba(0,0,0,.6);animation:fl 6s ease-in-out infinite}
+.med::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px dashed rgba(193,154,91,.3)}
+.med .ic{width:50%}
+.m1{top:7%;left:-62%;--r:-14deg}.m2{bottom:9%;right:-62%;--r:10deg;animation-delay:-3s}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-10px) rotate(var(--r,0deg))}}
+.pole::before{content:"";position:absolute;inset:-80px 0;background:repeating-linear-gradient(-45deg,var(--ox) 0 18px,var(--bone) 18px 36px,var(--navy) 36px 54px);animation:spin 4s linear infinite}
+.pole::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(255,255,255,.3) 28%,rgba(255,255,255,0) 46%,rgba(0,0,0,.55))}
+@keyframes spin{to{transform:translateY(-76.37px)}}
+.cue{position:absolute;left:max(1.5rem,calc(50% - 590px));bottom:2rem;display:flex;align-items:center;gap:1rem;font:600 .62rem/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+.cue::after{content:"";width:1px;height:48px;background:linear-gradient(var(--brass),transparent);animation:cue 2.2s var(--ease) infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.up{animation:up 1.1s var(--ease) var(--d,0s) both}
+@keyframes up{from{opacity:0;transform:translateY(32px)}}
+
+/* ---------- Marquee ---------- */
+.mq{border-block:1px solid var(--line);background:var(--coal);overflow:hidden;padding:1.1rem 0;white-space:nowrap}
+.mq div{display:inline-flex;animation:mq 40s linear infinite;font:italic 500 1.4rem/1 var(--serif);color:var(--mute)}
+.mq span{padding-right:2.5rem}.mq span::after{content:"✦";margin-left:2.5rem;color:var(--brass);font-style:normal;font-size:.8rem}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- Services ---------- */
+.svc{background:var(--bone);color:#1a1713}
+.svc .eyebrow,.svc h2 em{color:var(--ox)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:4rem}
+.svc .lead{color:#6b6356}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:1.5rem}
+.card{background:#f6f0e5;border:1px solid rgba(26,23,19,.12);padding:2.5rem 2rem 1.8rem;transition:transform .5s var(--ease),box-shadow .5s,border-color .5s}
+.card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -25px rgba(26,23,19,.4);border-color:var(--brass)}
+.card .ic{width:40px;height:40px;color:var(--ox);margin-bottom:1.3rem}
+.card h3{font:500 2.1rem/1 var(--serif);margin-bottom:1.5rem}
+.row{display:grid;grid-template-columns:auto 1fr auto;column-gap:.7rem;align-items:baseline;padding:1rem 0;border-top:1px solid rgba(26,23,19,.12);transition:padding .35s var(--ease)}
+.row b{font-weight:600}.row i{border-bottom:1px dotted rgba(26,23,19,.4);transform:translateY(-4px)}
+.row em{font:600 1.45rem/1 var(--serif);font-style:normal;transition:color .3s}
+.row small{grid-column:1/-1;margin-top:.15rem;color:#6b6356;font-size:.84rem;line-height:1.5}
+.row:hover{padding-left:.5rem}.row:hover em{color:var(--ox)}
+.rit{margin-top:1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;padding:2.2rem 2.4rem;background:var(--ink);color:var(--bone);border:1px solid var(--brass)}
+.rit h3{font:500 2rem/1.1 var(--serif)}.rit h3 em{color:var(--brass)}.rit p{color:var(--mute);font-size:.92rem}
+.rit .pr{font:500 2.6rem/1 var(--serif);color:var(--brass);margin-right:1.5rem}
+
+/* ---------- About ---------- */
+.ab{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,7vw,6rem);align-items:center}
+.fr{position:relative;aspect-ratio:4/5;display:grid;place-items:center;border:1px solid var(--line);background:radial-gradient(80% 60% at 50% 30%,#3b2f22,#14110e)}
+.fr::before{content:"";position:absolute;inset:16px;border:1px solid rgba(193,154,91,.5)}
+.fr>.ic{width:44%;color:var(--brass);filter:drop-shadow(0 0 24px rgba(193,154,91,.35))}
+.bd{position:absolute;right:-2.2rem;bottom:-2.2rem;width:128px;height:128px;background:var(--ink);border-radius:50%;animation:rot 26s linear infinite}
+.bd text{font:600 8px var(--sans);fill:var(--brass);letter-spacing:1.6px}
+@keyframes rot{to{transform:rotate(360deg)}}
+.ab p{color:var(--mute);margin-top:1.4rem;max-width:52ch}
+.st{display:flex;gap:3rem;flex-wrap:wrap;margin-top:2.6rem;padding-top:2rem;border-top:1px solid var(--line)}
+.st b{display:block;font:500 3.2rem/1 var(--serif);color:var(--brass)}
+.st span{font:600 .66rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+
+/* ---------- Gallery ---------- */
+.gal{background:var(--coal)}
+.gl{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,18vw,230px);gap:1rem;margin-top:3.5rem}
+.t{position:relative;overflow:hidden;display:grid;place-items:center;isolation:isolate;border:1px solid var(--line);background:radial-gradient(70% 60% at 50% 35%,rgba(193,154,91,.16),transparent),var(--g)}
+.t::before{content:"";position:absolute;inset:12px;z-index:2;pointer-events:none;border:1px solid rgba(193,154,91,.3);transition:inset .6s var(--ease),border-color .6s}
+.t:hover::before{inset:20px;border-color:var(--brass)}
+.t .ic{width:34%;max-width:120px;color:rgba(226,192,136,.78);transition:transform .8s var(--ease),color .5s}
+.t:hover .ic{transform:scale(1.16) rotate(-6deg);color:var(--brass-2)}
+.t figcaption{position:absolute;left:1.7rem;bottom:1.5rem;z-index:3;font:italic 500 1.3rem/1 var(--serif);opacity:.85;transform:translateY(6px);transition:transform .5s var(--ease),opacity .5s}
+.t:hover figcaption{opacity:1;transform:none}
+.t1{--g:linear-gradient(150deg,#2f2519,#0f0d0b);grid-column:span 2;grid-row:span 2}.t1 .ic{max-width:170px}
+.t2{--g:linear-gradient(150deg,#3a1816,#0f0d0b)}.t3{--g:linear-gradient(150deg,#1d2f43,#0d0f12)}
+.t4{--g:linear-gradient(150deg,#2a2a22,#0f0d0b);grid-column:span 2}
+.t5{--g:linear-gradient(150deg,#33231a,#0f0d0b);grid-column:span 2}.t6{--g:linear-gradient(150deg,#1d2f43,#120d0c);grid-column:span 2}
+
+/* ---------- Reviews ---------- */
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:1.5rem;margin-top:3.5rem}
+.rc{padding:2.4rem 2rem;border:1px solid var(--line);background:linear-gradient(180deg,rgba(236,228,214,.05),transparent);transition:transform .5s var(--ease),border-color .5s}
+.rc:hover{transform:translateY(-6px);border-color:rgba(193,154,91,.6)}
+.stars{color:var(--brass);letter-spacing:.3em;font-size:.85rem}
+.rc blockquote{font:italic 500 1.5rem/1.35 var(--serif);margin:1.2rem 0 1.8rem}
+.who{display:flex;align-items:center;gap:.9rem;font-size:.9rem;font-weight:500}
+.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--brass);color:var(--ink);font:600 .78rem var(--sans)}
+.who small{display:block;color:var(--mute);font-weight:400;font-size:.75rem}
+
+/* ---------- Contact ---------- */
+.ctb{background:var(--coal);border-top:1px solid var(--line)}
+.ct{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:start}
+.it{display:grid;grid-template-columns:6.5rem 1fr;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--line)}
+.it dt{font:600 .66rem/1.9 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--brass)}
+.it a{text-decoration:none;border-bottom:1px solid rgba(193,154,91,.5);transition:color .3s,border-color .3s}.it a:hover{color:var(--brass-2);border-color:var(--brass-2)}
+.ct .cta{margin-top:2.2rem}
+.hc{padding:2.4rem;border:1px solid var(--line);background:var(--ink);box-shadow:0 0 0 8px rgba(193,154,91,.06)}
+.hc>div:first-child{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1rem;font:500 1.8rem/1 var(--serif)}
+.pill{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .85rem;border:1px solid var(--line);border-radius:99px;font:600 .62rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mute)}
+.pill.on{color:#9ad39a;border-color:rgba(154,211,154,.4)}.pill.on::before{background:#9ad39a;animation:pl 2s infinite}
+@keyframes pl{50%{opacity:.25}}
+.hr{display:flex;justify-content:space-between;padding:.85rem 0;border-top:1px solid var(--line);color:var(--mute);font-size:.95rem}
+.hr.td{color:var(--brass-2);font-weight:600}
+
+/* ---------- Footer ---------- */
+footer{padding:2.5rem 0;border-top:1px solid var(--line);font-size:.78rem;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+footer .logo{font-size:1.25rem;color:var(--bone)}footer ul{display:flex;gap:1.8rem;list-style:none;padding:0}
+
+/* ---------- Reveal & motion ---------- */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:960px){
+.dn{display:none}.tg{display:block}.bar .btn{margin-left:auto}
+.hg{grid-template-columns:1fr}
+.pw{position:absolute;right:7%;top:50%;transform:translateY(-50%);opacity:.22;z-index:-1}.pole{height:min(44vh,320px)}.med{display:none}
+.ov{display:flex;flex-direction:column;align-items:center;overflow-y:auto;padding:6rem 1.5rem 2rem}.ov ul{margin:auto}
+.ab,.ct{grid-template-columns:1fr}
+.fr{width:min(100%,420px);margin:0 auto 4.5rem}.bd{left:calc(50% - 52px);right:auto;bottom:-52px;width:104px;height:104px}
+}
+@media (max-width:700px){
+.gl{grid-template-columns:1fr 1fr}.t5,.t6{grid-column:span 1}.t1{grid-row:span 1}.t figcaption{font-size:1.1rem;left:1.3rem}
+.rit{padding:1.8rem 1.5rem}.rit>div:last-child{width:100%}.rit .pr{display:block;margin:0 0 1rem}.rit .btn{width:100%;justify-content:center}.cue{display:none}
+.hero{padding:7rem 0 4.5rem}.hero h1{font-size:clamp(2.9rem,14.5vw,4.4rem)}.hero p.lead{font-size:1rem;margin-bottom:2rem}.facts{gap:.9rem 1.5rem;margin-top:2.2rem;font-size:.62rem}
+.sh{margin-bottom:2.5rem}.gl,.rg{margin-top:2.5rem}.gl{gap:.7rem;grid-auto-rows:168px}
+.card{padding:2rem 1.4rem 1.2rem}.rc{padding:2rem 1.5rem}.rc blockquote{font-size:1.35rem}
+.fr{aspect-ratio:1}.st{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}.st b{font-size:2.4rem}.st span{font-size:.58rem;letter-spacing:.14em}
+.hc>div:first-child{flex-wrap:wrap;font-size:1.55rem}
+footer .wrap{flex-direction:column;text-align:center}footer ul{gap:1.2rem}footer .ln{display:inline-block;padding:.5rem 0}
+}
+@media (max-width:480px){.wrap{width:min(1180px,100% - 2.5rem)}.bar .btn{display:none}.tg{margin-left:auto;margin-right:-8px}.it{grid-template-columns:1fr;gap:.2rem}.hc{padding:1.6rem 1.3rem}.cta{flex-direction:column}.cta .btn{width:100%;justify-content:center}.ov .ln{font-size:2.2rem}.logo{font-size:1.4rem}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="sc" viewBox="0 0 64 64"><circle cx="18" cy="49" r="7"/><circle cx="46" cy="49" r="7"/><path d="M22 43 44 6M42 43 20 6"/></symbol>
+<symbol id="rz" viewBox="0 0 64 64"><path d="M30 36h26a3 3 0 0 0 0-6H30M30 30H9q-3 3 0 6h21M36 33h.1"/></symbol>
+<symbol id="cb" viewBox="0 0 64 64"><rect x="6" y="20" width="52" height="11" rx="2"/><path d="M12 31v14M19 31v14M26 31v14M33 31v14M40 31v14M47 31v14M53 31v14"/></symbol>
+<symbol id="ch" viewBox="0 0 64 64"><path d="M22 8h20v24H22zM16 32h32v8H16zM32 40v12M20 56h24M16 32v-6M48 32v-6"/></symbol>
+<symbol id="br" viewBox="0 0 64 64"><path d="M24 34c0-14 4-23 8-23s8 9 8 23zM28 34h8l-2 22h-4zM27 40h10"/></symbol>
+<symbol id="pl" viewBox="0 0 64 64"><rect x="24" y="12" width="16" height="42" rx="3"/><path d="M24 24l16-8M24 36l16-8M24 48l16-8M28 12v-4h8v4M28 54v4h8v-4"/></symbol>
+<symbol id="ar" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="sp" viewBox="0 0 64 64"><path d="M20 31h20a3 3 0 0 1 3 3v19a3 3 0 0 1-3 3H20a3 3 0 0 1-3-3V34a3 3 0 0 1 3-3zM24 31v-6h12v6M22 25v-9h16l7 3v6zM42 25v5q0 2-2 2M17 42h26M24 49h12"/><circle cx="50" cy="17" r="1"/><circle cx="54" cy="21" r="1"/><circle cx="50" cy="25" r="1"/><circle cx="56" cy="15" r="1"/><circle cx="53" cy="11" r="1"/></symbol>
+</defs></svg>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Ironwood &amp; Finch<small>Barber Co.</small></a>
+    <nav class="dn" aria-label="Primary"><ul>
+      <li><a class="ln" href="#services">Services</a></li><li><a class="ln" href="#about">About</a></li>
+      <li><a class="ln" href="#gallery">Gallery</a></li><li><a class="ln" href="#reviews">Reviews</a></li><li><a class="ln" href="#contact">Contact</a></li>
+    </ul></nav>
+    <a class="btn sm" href="#contact">Book</a>
+    <button class="tg" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+<div class="ov" id="ov"></div>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="ring"></div>
+  <div class="wrap hg">
+    <div>
+      <span class="eyebrow up">Est. 2011 · Chicago, Illinois</span>
+      <h1 class="up" style="--d:.12s">The art of the <em>sharp</em> cut.</h1>
+      <p class="lead up" style="--d:.24s">Precision cuts, hot-lather shaves and beard craft — delivered unhurried, by barbers who treat every appointment as a signature piece.</p>
+      <div class="cta up" style="--d:.36s">
+        <a class="btn" href="#contact">Book an Appointment <svg class="ic" aria-hidden="true"><use href="#ar"/></svg></a>
+        <a class="btn gh" href="#services">View Services</a>
+      </div>
+      <div class="facts up" style="--d:.5s"><span>Walk-ins welcome</span><span>Hot towel finish</span></div>
+    </div>
+    <div class="pw up" style="--d:.3s" aria-hidden="true">
+      <i class="cap"></i><div class="pole"></div><i class="cap b"></i>
+      <span class="med m1"><svg class="ic" viewBox="0 0 64 64"><use href="#sc"/></svg></span>
+      <span class="med m2"><svg class="ic" viewBox="0 0 64 64"><use href="#sp"/></svg></span>
+    </div>
+  </div>
+  <div class="cue">Scroll</div>
+</section>
+
+<div class="mq" aria-hidden="true"><div><span>Classic Cuts</span><span>Skin Fades</span><span>Hot Towel Shaves</span><span>Beard Sculpting</span><span>Straight Razor Craft</span><span>Walk-ins Welcome</span></div></div>
+
+<!-- SERVICES -->
+<section class="svc" id="services"><div class="wrap">
+  <div class="sh">
+    <div class="rv"><span class="eyebrow">The Menu</span><h2>Services &amp; <em>pricing</em></h2></div>
+    <p class="lead rv" style="--d:.1s">Every service includes a consultation, a warm towel and a neckline finished by hand.</p>
+  </div>
+  <div class="sg">
+    <article class="card"><svg class="ic" viewBox="0 0 64 64"><use href="#sc"/></svg><h3>Haircuts</h3>
+      <div class="row"><b>Classic Cut</b><i></i><em>$45</em><small>Scissor and clipper work, tailored to your head shape.</small></div>
+      <div class="row"><b>Skin / Taper Fade</b><i></i><em>$50</em><small>Seamless blend with razor-sharp detailing.</small></div>
+      <div class="row"><b>Junior Cut</b><i></i><em>$32</em><small>Ages 12 and under.</small></div></article>
+    <article class="card"><svg class="ic" viewBox="0 0 64 64"><use href="#rz"/></svg><h3>Beard &amp; Shave</h3>
+      <div class="row"><b>Beard Trim &amp; Shape</b><i></i><em>$30</em><small>Contoured to your jawline, finished with oil.</small></div>
+      <div class="row"><b>Hot Towel Shave</b><i></i><em>$45</em><small>Straight razor, hot lather, two steaming towels.</small></div>
+      <div class="row"><b>Sculpt &amp; Line-Up</b><i></i><em>$38</em><small>Precise edges for neck, cheek and temple.</small></div></article>
+    <article class="card"><svg class="ic" viewBox="0 0 64 64"><use href="#cb"/></svg><h3>Styling</h3>
+      <div class="row"><b>Wash, Dry &amp; Style</b><i></i><em>$25</em><small>Shampoo, blow-dry and finishing product.</small></div>
+      <div class="row"><b>Grey Blending</b><i></i><em>$40</em><small>Subtle, natural-looking colour refresh.</small></div>
+      <div class="row"><b>Scalp Treatment</b><i></i><em>$30</em><small>Exfoliating massage with a cooling tonic.</small></div></article>
+  </div>
+  <div class="rit rv">
+    <div><h3>The Ironwood <em>Ritual</em></h3><p>Haircut, beard sculpt and hot towel shave — 90 minutes in the chair.</p></div>
+    <div><span class="pr">$95</span><a class="btn sm" href="#contact">Reserve</a></div>
+  </div>
+</div></section>
+
+<!-- ABOUT -->
+<section id="about"><div class="wrap ab">
+  <div class="fr rv">
+    <svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><use href="#sc"/></svg>
+    <svg class="bd" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="cp" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#cp" textLength="286" lengthAdjust="spacing">IRONWOOD &amp; FINCH · BARBER CO. · EST. 2011 ·</textPath></text><use class="ic" href="#sc" x="40" y="40" width="40" height="40" style="color:#c19a5b"/></svg>
+  </div>
+  <div>
+    <span class="eyebrow rv">Our Story</span>
+    <h2 class="rv" style="--d:.08s">Old-world craft. <em>Modern</em> precision.</h2>
+    <p class="rv" style="--d:.16s">Ironwood &amp; Finch began in 2011 as a two-chair room above a hardware store, with a single rule: nobody leaves rushed. Today our four barbers still work the traditional way — hot lather, steady hands, honest conversation — with all the precision a modern fade demands.</p>
+    <p class="rv" style="--d:.24s">Every appointment ends the same: a warm towel, a clean neckline and a mirror check before you stand. It’s a small ritual, and it’s the reason our regulars never go anywhere else.</p>
+    <div class="st"><div><b data-c="15">15</b><span>Years</span></div><div><b data-c="4">4</b><span>Master barbers</span></div><div><b data-c="40" data-s="k+">40k+</b><span>Cuts delivered</span></div></div>
+  </div>
+</div></section>
+
+<!-- GALLERY -->
+<!-- Swap each tile's <svg> for an <img loading="lazy"> (object-fit:cover; position:absolute; inset:0) when real photography is available. -->
+<section class="gal" id="gallery"><div class="wrap">
+  <div class="rv"><span class="eyebrow">The Shop &amp; The Work</span><h2>A look <em>inside</em></h2></div>
+  <div class="gl">
+    <figure class="t t1"><svg class="ic" viewBox="0 0 64 64"><use href="#sc"/></svg><figcaption>The Skin Fade</figcaption></figure>
+    <figure class="t t2"><svg class="ic" viewBox="0 0 64 64"><use href="#cb"/></svg><figcaption>Classic Taper</figcaption></figure>
+    <figure class="t t3"><svg class="ic" viewBox="0 0 64 64"><use href="#rz"/></svg><figcaption>Razor Detail</figcaption></figure>
+    <figure class="t t4"><svg class="ic" viewBox="0 0 64 64"><use href="#ch"/></svg><figcaption>Chair No. 2</figcaption></figure>
+    <figure class="t t5"><svg class="ic" viewBox="0 0 64 64"><use href="#br"/></svg><figcaption>Hot Lather</figcaption></figure>
+    <figure class="t t6"><svg class="ic" viewBox="0 0 64 64"><use href="#pl"/></svg><figcaption>The Front Window</figcaption></figure>
+  </div>
+</div></section>
+
+<!-- REVIEWS -->
+<section id="reviews"><div class="wrap">
+  <div class="rv"><span class="eyebrow">Kind Words</span><h2>Heard in the <em>chair</em></h2></div>
+  <div class="rg">
+    <figure class="rc"><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>“Best fade I’ve had in years. Nobody rushed me, and the hot towel finish is worth the trip alone.”</blockquote><figcaption class="who"><span class="av">DR</span><span>Daniel R.<small>Fictional sample review</small></span></figcaption></figure>
+    <figure class="rc"><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>“Came in for a beard trim and left feeling like a new man. The shop is gorgeous and they actually listen.”</blockquote><figcaption class="who"><span class="av">MT</span><span>Marcus T.<small>Fictional sample review</small></span></figcaption></figure>
+    <figure class="rc"><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>“I bring my son every month. Patient with him, precise with me — a true neighborhood institution.”</blockquote><figcaption class="who"><span class="av">EP</span><span>Elijah P.<small>Fictional sample review</small></span></figcaption></figure>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section class="ctb" id="contact"><div class="wrap ct">
+  <div>
+    <span class="eyebrow rv">Visit</span>
+    <h2 class="rv" style="--d:.08s">Your chair is <em>waiting.</em></h2>
+    <dl class="rv" style="--d:.16s;margin-top:2.4rem">
+      <div class="it"><dt>Address</dt><dd><a href="#contact">218 W. Division Street<br>Chicago, IL 60610</a></dd></div>
+      <div class="it"><dt>Phone</dt><dd><a href="tel:+13125550148">(312) 555-0148</a></dd></div>
+      <div class="it"><dt>Email</dt><dd><a href="mailto:book@ironwoodandfinch.example">book@ironwoodandfinch.example</a></dd></div>
+    </dl>
+    <div class="cta rv" style="--d:.24s"><a class="btn" href="mailto:book@ironwoodandfinch.example?subject=Appointment%20request">Book an Appointment <svg class="ic" aria-hidden="true"><use href="#ar"/></svg></a><a class="btn gh" href="tel:+13125550148">Call the Shop</a></div>
+  </div>
+  <div class="hc rv" style="--d:.12s"><div>Opening Hours <span class="pill" id="op">Closed now</span></div><div id="hrs"></div></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <a class="logo" href="#top">Ironwood &amp; Finch</a>
+  <ul><li><a class="ln" href="#services">Services</a></li><li><a class="ln" href="#gallery">Gallery</a></li><li><a class="ln" href="#contact">Book</a></li></ul>
+  <span>© <span id="yr">2026</span> Ironwood &amp; Finch · A fictional business for portfolio purposes</span>
+</div></footer>
+
+<script>
+(()=>{const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const h=$('header'),ov=$('#ov'),tg=$('.tg');
+
+/* Header state + mobile menu */
+addEventListener('scroll',()=>h.classList.toggle('sc',scrollY>40),{passive:true});
+ov.innerHTML=$('.dn').innerHTML;
+const menu=f=>{f=f??!h.classList.contains('open');h.classList.toggle('open',f);ov.classList.toggle('open',f);tg.setAttribute('aria-expanded',f);document.body.style.overflow=f?'hidden':''};
+tg.onclick=()=>menu();ov.onclick=e=>e.target.closest('a')&&menu(false);
+addEventListener('keydown',e=>e.key==='Escape'&&menu(false));
+
+/* Marquee loop */
+const m=$('.mq div');m.innerHTML=m.innerHTML.repeat(4);
+
+/* Staggered reveal + count-up */
+$$('.sg,.rg,.gl,.st').forEach(g=>[...g.children].forEach((c,i)=>{c.classList.add('rv');c.style.setProperty('--d',i*.1+'s')}));
+const count=e=>{const n=+e.dataset.c,s=e.dataset.s||'';let t0;const f=t=>{t0??=t;const p=Math.min((t-t0)/1400,1);e.textContent=Math.round(n*(1-(1-p)**3))+s;p<1&&requestAnimationFrame(f)};requestAnimationFrame(f)};
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;const el=x.target;el.classList.add('in');io.unobserve(el);
+el.querySelectorAll('[data-c]').forEach(count);setTimeout(()=>el.classList.remove('rv','in'),1600)}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+$$('.rv').forEach(el=>io.observe(el));
+
+/* Opening hours (shop time: America/Chicago) */
+const H=[[10,16],0,[9,19],[9,19],[9,19],[9,20],[8,18]],D=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],f12=x=>(x%12||12)+(x<12?' AM':' PM');
+const n=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Chicago'})),d=n.getDay(),hr=n.getHours()+n.getMinutes()/60;
+$('#hrs').innerHTML=[1,2,3,4,5,6,0].map(i=>`<div class="hr${i==d?' td':''}"><span>${D[i]}</span><span>${H[i]?f12(H[i][0])+' – '+f12(H[i][1]):'Closed'}</span></div>`).join('');
+const open=!!H[d]&&hr>=H[d][0]&&hr<H[d][1],p=$('#op');p.textContent=open?'Open now':'Closed now';p.classList.toggle('on',open);
+$('#yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
